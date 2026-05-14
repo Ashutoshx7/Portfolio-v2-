@@ -19,7 +19,7 @@ const skills = [
   { name: "MongoDB", icon: "mongodb" },
   { name: "Redis", icon: "redis" },
   { name: "Prisma", icon: "prisma" },
-  { name: "Zustand", icon: "zustand" },
+  { name: "Zustand", icon: "https://raw.githubusercontent.com/pmndrs/zustand/main/docs/favicon.ico" },
   { name: "Tanstack Query", icon: "reactquery" },
   { name: "Postman", icon: "postman" },
   { name: "Tailwind", icon: "tailwindcss" },
@@ -28,7 +28,6 @@ const skills = [
   { name: "GSAP", icon: "greensock" },
   { name: "JavaScript", icon: "javascript" },
   { name: "TypeScript", icon: "typescript" },
-  { name: "Java", icon: "java" },
   { name: "Python", icon: "python" },
   { name: "C/C++", icon: "cplusplus" },
   { name: "SQL", icon: "databricks" },
@@ -289,10 +288,10 @@ export default function Home() {
           </div>
 
           <div className="relative pt-6 pb-2">
-            <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto px-4">
+            <div className="flex flex-wrap gap-2 w-full">
               {skills.map((skill, index) => (
-                <div key={index} className="flex items-center gap-2 px-3 py-1.5 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#0a0a0a] dark:hover:bg-[#121214] border border-zinc-200 dark:border-zinc-800 rounded-[6px] transition-colors duration-200 cursor-default">
-                  <img src={`https://cdn.simpleicons.org/${skill.icon}/71717a`} alt={skill.name} className="w-3.5 h-3.5 opacity-80" />
+                <div key={index} className="grow flex items-center justify-center gap-2 px-3 py-1.5 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#0a0a0a] dark:hover:bg-[#121214] border border-zinc-200 dark:border-zinc-800 rounded-[6px] transition-colors duration-200 cursor-default">
+                  <img src={skill.icon.startsWith('http') ? skill.icon : `https://cdn.simpleicons.org/${skill.icon}/71717a`} alt={skill.name} className={`w-3.5 h-3.5 opacity-80 ${skill.icon.startsWith('http') ? 'rounded-sm grayscale' : ''}`} />
                   <span className="text-[13px] font-medium text-zinc-600 dark:text-zinc-400">{skill.name}</span>
                 </div>
               ))}
