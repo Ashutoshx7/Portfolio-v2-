@@ -106,7 +106,7 @@ export const ProjectCard = ({ project, setActiveVideo }: { project: Project; set
         <motion.h1
           className="absolute top-4 left-4 text-[10px] font-bold text-zinc-500 dark:text-zinc-400 z-30 uppercase tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"
           variants={{
-            rest: { left: "1rem", top: "1rem", x: "0%", color: "var(--neutral-500)", opacity: 0 },
+            rest: { left: "1rem", top: "1rem", x: "0%", color: "#71717a", opacity: 0 },
             hover: { left: "50%", top: "25%", x: "-50%", color: "#ffffff", opacity: 1 },
           }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
@@ -246,9 +246,9 @@ export function ProjectsGrid() {
         <div className="relative w-full h-0 hidden md:block">
           <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-zinc-200 dark:border-zinc-800 pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
           {/* Intersections */}
-          <div className="absolute -left-4 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
-          <div className="absolute -right-4 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
-          <div className="absolute left-1/2 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+          <div className="absolute top-0 -left-4 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
+          <div className="absolute top-0 -right-4 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
+          <div className="absolute top-0 left-1/2 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
         </div>
 
         {/* Row 2 */}
