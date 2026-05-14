@@ -68,11 +68,10 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
           }
         }`;
 
-        const response = await fetch("https://api.github.com/graphql", {
+        const response = await fetch("/api/github", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN || ""}`,
           },
           body: JSON.stringify({ query }),
         });
