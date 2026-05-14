@@ -307,7 +307,7 @@ export function ProjectsGrid() {
         {/* Row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 md:gap-y-0 pb-6">
           {projectsData.slice(0, 2).map((project, idx) => (
-            <ProjectCard key={project.title} project={project} idx={idx} setActiveVideo={setActiveVideo} />
+            <ProjectCard key={project.title} project={project} setActiveVideo={setActiveVideo} />
           ))}
         </div>
 
@@ -323,7 +323,7 @@ export function ProjectsGrid() {
         {/* Row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 md:gap-y-0 pt-6">
           {projectsData.slice(2, 4).map((project, idx) => (
-            <ProjectCard key={project.title} project={project} idx={idx + 2} setActiveVideo={setActiveVideo} />
+            <ProjectCard key={project.title} project={project} setActiveVideo={setActiveVideo} />
           ))}
         </div>
       </div>
