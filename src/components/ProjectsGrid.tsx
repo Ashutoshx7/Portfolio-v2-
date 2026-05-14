@@ -148,7 +148,7 @@ const ProjectCard = ({ project, setActiveVideo }: { project: Project; setActiveV
     <div className="flex flex-col group cursor-pointer" onClick={() => project.video && setActiveVideo(project.video)}>
       {/* Outer Wrapper exactly like screenshot */}
       <motion.div
-        className="relative w-full aspect-[1.4] rounded-xl border border-zinc-200/50 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/20 p-4 pb-0 flex flex-col overflow-hidden transition-colors hover:bg-zinc-100/50 dark:hover:bg-zinc-900/40"
+        className="relative w-full aspect-[1.4] rounded-xl border border-black/5 dark:border-white/5 bg-zinc-50/80 dark:bg-[#09090b]/80 shadow-sm p-4 pb-0 flex flex-col overflow-hidden transition-all duration-300 hover:shadow-md hover:border-black/10 dark:hover:border-white/10"
         initial="rest"
         whileHover="hover"
         animate="rest"
@@ -205,14 +205,14 @@ const ProjectCard = ({ project, setActiveVideo }: { project: Project; setActiveV
 
         {/* Floating screenshot sitting directly at the bottom of the outer wrapper */}
         <motion.div
-          className="absolute bottom-0 left-1/2 w-[85%] rounded-t-lg bg-black p-0 shadow-2xl z-20 border-x border-t border-zinc-200/50 dark:border-zinc-800/80"
+          className="absolute bottom-0 left-1/2 w-[85%] rounded-t-[10px] bg-white dark:bg-[#0a0a0a] p-0 shadow-[0_-8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_-8px_30px_rgba(0,0,0,0.5)] z-20 border border-black/5 dark:border-white/10 border-b-0"
           variants={{
             rest: { height: "78%", y: 0, x: "-50%" },
             hover: { height: "72%", y: 4, x: "-50%" },
           }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
         >
-          <div className="size-full overflow-hidden rounded-t-[7px]">
+          <div className="size-full overflow-hidden rounded-t-[9px]">
             <Image src={imageSrc} alt={`${project.title} preview`} width={600} height={400} className="size-full object-cover" />
           </div>
         </motion.div>

@@ -109,7 +109,7 @@ export function ExperienceList() {
             )}
 
             <div
-              className="flex items-center justify-between py-4 px-4 -mx-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20"
+              className="flex items-center justify-between py-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20"
               onClick={() => setOpenIdx(isOpen ? null : idx)}
             >
               <div className="flex items-center gap-4">
