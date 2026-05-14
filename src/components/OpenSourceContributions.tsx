@@ -152,7 +152,7 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
                 href={pr.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex flex-col gap-1.5 py-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/20"
+                className="group relative flex flex-col gap-1.5 py-4 px-4 -mx-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/20 rounded-lg"
               >
                 {!isLast && (
                   <div

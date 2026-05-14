@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import type { ComponentType } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, Star, X, Network, Search } from "lucide-react";
 import {
@@ -35,14 +36,15 @@ import {
 } from "react-icons/si";
 
 type TechIcon = ComponentType<{ className?: string }>;
-type TechKey =
+export type TechKey =
   | "next" | "ts" | "react" | "three" | "prisma" | "cloud" | "langchain" | "langgraph" | "rag"
   | "node" | "motion" | "tailwind" | "bun" | "eslint" | "radixui" | "charts" | "github" | "fastapi"
   | "redis" | "celery" | "tldraw" | "css3" | "python" | "anthropic" | "claude" | "gemini" | "llama";
 
-type TechItem = TechKey | { label: string; tooltip?: string; };
+export type TechItem = TechKey | { label: string; tooltip?: string; };
 
-interface Project {
+export interface Project {
+  slug: string;
   title: string;
   imageTitle: string;
   src: string;
@@ -57,7 +59,7 @@ interface Project {
   hasPin: boolean;
 }
 
-const iconMap: Record<TechKey, TechIcon> = {
+export const iconMap: Record<TechKey, TechIcon> = {
   next: SiNextdotjs, ts: SiTypescript, react: SiReact, three: SiThreedotjs, prisma: SiPrisma,
   cloud: SiCloudflare, langchain: SiLangchain, langgraph: Network, rag: Search, node: SiNodedotjs,
   motion: SiFramer, tailwind: SiTailwindcss, bun: SiBun, eslint: SiEslint, radixui: SiRadixui,
@@ -66,7 +68,7 @@ const iconMap: Record<TechKey, TechIcon> = {
   gemini: SiGooglegemini, llama: SiMeta,
 };
 
-const techNames: Record<TechKey, string> = {
+export const techNames: Record<TechKey, string> = {
   next: "Next.js", ts: "TypeScript", react: "React", three: "Three.js", prisma: "Prisma",
   cloud: "Cloudflare", langchain: "LangChain", langgraph: "LangGraph", rag: "RAG",
   node: "Node.js", motion: "Framer Motion", tailwind: "Tailwind CSS", bun: "Bun", eslint: "ESLint",
@@ -77,6 +79,7 @@ const techNames: Record<TechKey, string> = {
 
 export const projectsData: Project[] = [
   {
+    slug: "vengenceui",
     title: "VengenceUI",
     imageTitle: "Landing Page",
     src: "/project-image/image copy.png",
@@ -91,6 +94,7 @@ export const projectsData: Project[] = [
     hasPin: true,
   },
   {
+    slug: "scribble3d",
     title: "Scribble3D",
     imageTitle: "App Interface",
     src: "/Screenshot%202026-02-07%20234301.png",
@@ -104,6 +108,7 @@ export const projectsData: Project[] = [
     hasPin: false,
   },
   {
+    slug: "blueprint",
     title: "Blueprint",
     imageTitle: "Canvas Interface",
     src: "/Screenshot%202026-02-07%20233440.png",
@@ -117,6 +122,7 @@ export const projectsData: Project[] = [
     hasPin: false,
   },
   {
+    slug: "inquiro",
     title: "Inquiro",
     imageTitle: "Search UI",
     src: "/Screenshot 2026-02-07 011550.png",
@@ -131,10 +137,11 @@ export const projectsData: Project[] = [
   },
 ];
 
-const ProjectCard = ({ project, setActiveVideo }: { project: Project; setActiveVideo: (v: string) => void }) => {
+export const ProjectCard = ({ project, setActiveVideo }: { project: Project; setActiveVideo: (v: string) => void }) => {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => { setMounted(true); }, []);
   const imageSrc = mounted && theme === "light" && project.lightModeSrc ? project.lightModeSrc : project.src;
@@ -145,7 +152,7 @@ const ProjectCard = ({ project, setActiveVideo }: { project: Project; setActiveV
   const statusLabel = isNotStarted ? "Not Started" : isBuilding ? "Building" : "Live";
 
   return (
-    <div className="flex flex-col group cursor-pointer" onClick={() => project.video && setActiveVideo(project.video)}>
+    <div className="flex flex-col group cursor-pointer" onClick={() => router.push(`/projects/${project.slug}`)}>
       {/* Outer Wrapper exactly like screenshot */}
       <motion.div
         className="relative w-full aspect-[1.4] rounded-xl border border-black/5 dark:border-white/5 bg-zinc-50/80 dark:bg-[#09090b]/80 shadow-sm p-4 pb-0 flex flex-col overflow-hidden transition-all duration-300 hover:shadow-md hover:border-black/10 dark:hover:border-white/10"
@@ -195,7 +202,13 @@ const ProjectCard = ({ project, setActiveVideo }: { project: Project; setActiveV
             variants={{ rest: { scale: 0.5, opacity: 0 }, hover: { scale: 1, opacity: 1 } }}
             transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.05 }}
           >
-            <div className="h-10 w-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-200 border border-white/50">
+            <div 
+              className="h-10 w-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-200 border border-white/50"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (project.video) setActiveVideo(project.video);
+              }}
+            >
               <svg className="w-4 h-4 text-zinc-900 ml-0.5 fill-current" viewBox="0 0 24 24">
                 <path d="M5.25 5.653v12.694c0 .856.926 1.39 1.668.958l11.1-6.347a1.125 1.125 0 000-1.916L6.918 4.695c-.742-.432-1.668.102-1.668.958z" />
               </svg>

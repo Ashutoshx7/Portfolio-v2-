@@ -81,7 +81,7 @@ export function ExperienceList() {
             {/* Dashed bottom border for all items except the last one */}
             {!isLast && (
               <div
-                className="absolute bottom-0 left-0 right-0 h-0 border-b border-zinc-200 dark:border-zinc-800 pointer-events-none z-10"
+                className="absolute bottom-0 left-[-16px] right-[-16px] h-0 border-b border-zinc-200 dark:border-zinc-800 pointer-events-none z-10"
                 style={{
                   maskImage:
                     "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -109,7 +109,7 @@ export function ExperienceList() {
             )}
 
             <div
-              className="flex items-center justify-between py-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20"
+              className="flex items-center justify-between py-4 px-4 -mx-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20 rounded-lg"
               onClick={() => setOpenIdx(isOpen ? null : idx)}
             >
               <div className="flex items-center gap-4">
