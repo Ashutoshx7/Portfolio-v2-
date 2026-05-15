@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export function RightNavbar() {
+  const pathname = usePathname();
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
@@ -34,6 +36,9 @@ export function RightNavbar() {
     { name: "Skills", href: "#skills" },
     { name: "Blog", href: "#blogs" },
   ];
+
+  // Only render on the homepage where the #hash sections exist
+  if (pathname !== "/") return null;
 
   return (
     <div
