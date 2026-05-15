@@ -139,7 +139,7 @@ export default function ContactPage() {
       </div>
 
       {/* Content Section */}
-      <div className="ml-[31%] mr-[31%] pt-[calc(22vh+112px)] pb-0 px-4 flex flex-col z-10 relative">
+      <div className="ml-[31%] mr-[31%] pt-[calc(22vh+112px)] pb-0 px-0 flex flex-col z-10 relative">
         {/* Form */}
         <form onSubmit={handleSubmit} className="mt-8 space-y-8">
           {/* FormSubmit Configuration */}
@@ -149,7 +149,7 @@ export default function ContactPage() {
           <input type="text" name="_honey" style={{ display: "none" }} />
 
           <div className="space-y-2">
-            <label className="text-[11px] font-bold tracking-[0.15em] text-zinc-400 dark:text-zinc-600 uppercase ml-0.5">
+            <label className="text-[11px] font-bold tracking-[0.15em] text-zinc-400 dark:text-zinc-600 uppercase ml-4">
               Full Name
             </label>
             <input
@@ -160,12 +160,12 @@ export default function ContactPage() {
                 setFormData({ ...formData, name: e.target.value })
               }
               placeholder="Tyler Durden"
-              className="w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-3 px-0.5 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-500 transition-colors placeholder:text-zinc-300 dark:placeholder:text-zinc-700"
+              className="w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-3 px-4 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-500 transition-colors placeholder:text-zinc-300 dark:placeholder:text-zinc-700"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-[11px] font-bold tracking-[0.15em] text-zinc-400 dark:text-zinc-600 uppercase ml-0.5">
+            <label className="text-[11px] font-bold tracking-[0.15em] text-zinc-400 dark:text-zinc-600 uppercase ml-4">
               Email Address
             </label>
             <input
@@ -177,12 +177,12 @@ export default function ContactPage() {
                 setFormData({ ...formData, email: e.target.value })
               }
               placeholder="tyler@projectmayhem.com"
-              className="w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-3 px-0.5 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-500 transition-colors placeholder:text-zinc-300 dark:placeholder:text-zinc-700"
+              className="w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-3 px-4 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-500 transition-colors placeholder:text-zinc-300 dark:placeholder:text-zinc-700"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-[11px] font-bold tracking-[0.15em] text-zinc-400 dark:text-zinc-600 uppercase ml-0.5">
+            <label className="text-[11px] font-bold tracking-[0.15em] text-zinc-400 dark:text-zinc-600 uppercase ml-4">
               Message
             </label>
             <textarea
@@ -194,7 +194,7 @@ export default function ContactPage() {
                 setFormData({ ...formData, message: e.target.value })
               }
               placeholder="You're crazy good, never change."
-              className="w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-3 px-0.5 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-500 transition-colors placeholder:text-zinc-300 dark:placeholder:text-zinc-700 resize-none"
+              className="w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-3 px-4 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-500 transition-colors placeholder:text-zinc-300 dark:placeholder:text-zinc-700 resize-none"
             />
           </div>
 
@@ -220,7 +220,7 @@ export default function ContactPage() {
         </div>
 
         {/* Footer - Socials + Displacement Text */}
-        <div className="pt-0 -mt-6 pb-5 flex flex-col md:flex-row md:items-center justify-between gap-6 overflow-hidden">
+        <div className="pt-0 -mt-6 pb-5 px-4 flex flex-col md:flex-row md:items-center justify-between gap-6 overflow-hidden">
           <div className="flex-shrink-0">
             <p className="text-[14px] text-zinc-500 mb-2">Find me on my <span className="font-medium text-zinc-800 dark:text-zinc-200">socials</span></p>
             <div className="flex flex-wrap gap-1.5">
