@@ -114,7 +114,7 @@ const DisplacementText = ({
     const scene = new THREE.Scene();
     scene.background = null;
 
-    const cameraDistance = 8;
+    const cameraDistance = 12;
     const aspect = width / height;
     const camera = new THREE.OrthographicCamera(
       -cameraDistance * aspect,
@@ -136,7 +136,7 @@ const DisplacementText = ({
     renderer.domElement.style.height = "100%";
     container.appendChild(renderer.domElement);
 
-    const geometry = new THREE.PlaneGeometry(15, 15, 100, 100);
+    const geometry = new THREE.PlaneGeometry(30, 30, 100, 100);
     const getActiveColor = () => {
       if (color) {
         return color;

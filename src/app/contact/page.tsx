@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { FooterBackground } from "@/components/FooterBackground";
 import { CommandMenu } from "@/components/command-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -54,6 +54,27 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen w-full bg-white dark:bg-[#0a0a0a] relative overflow-x-hidden transition-colors duration-300">
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus {
+          -webkit-text-fill-color: var(--autofill-text) !important;
+          -webkit-box-shadow: 0 0 0px 1000px var(--autofill-bg) inset !important;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+        :root {
+          --autofill-bg: white;
+          --autofill-text: #171717;
+        }
+        .dark {
+          --autofill-bg: #0a0a0a;
+          --autofill-text: #fafafa;
+        }
+      `}} />
       <RightNavbar />
 
       {/* Blueprint Vertical Lines */}
@@ -191,53 +212,48 @@ export default function ContactPage() {
         </form>
 
         {/* Separator */}
-        <div className="relative mt-16 mb-0">
+        <div className="relative mt-12 mb-0">
           <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/10 pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
           {/* Intersection nodes */}
           <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/20 -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
           <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/20 translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
         </div>
 
-        {/* Footer - Socials */}
-        <div className="py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <p className="text-[12px] text-zinc-500 dark:text-zinc-400">
-              Open for collaborations and full-time roles.
-            </p>
+        {/* Footer - Socials + Displacement Text */}
+        <div className="pt-0 -mt-6 pb-5 flex flex-col md:flex-row md:items-center justify-between gap-6 overflow-hidden">
+          <div className="flex-shrink-0">
+            <p className="text-[14px] text-zinc-500 mb-2">Find me on my <span className="font-medium text-zinc-800 dark:text-zinc-200">socials</span></p>
+            <div className="flex flex-wrap gap-1.5">
+              <a href="https://github.com/Ashutoshx7" target="_blank" className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" strokeWidth="2" fill="none" />
+                </svg>
+                GitHub
+              </a>
+              <a href="https://x.com/Ashutosh_7x7" target="_blank" className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
+                  <path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M20 4l-6.768 6.768" stroke="currentColor" strokeWidth="2" fill="none" />
+                </svg>
+                Twitter
+              </a>
+              <a href="#" target="_blank" className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="2" fill="none" />
+                </svg>
+                LinkedIn
+              </a>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            {/* GitHub */}
-            <a href="https://github.com/Ashutoshx7" target="_blank" className="p-1.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-              <svg viewBox="0 0 24 24" className="w-[14px] h-[14px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-              </svg>
-            </a>
-            {/* Twitter/X */}
-            <a href="https://x.com/Ashutosh_7x7" target="_blank" className="p-1.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-              <svg viewBox="0 0 24 24" className="w-[14px] h-[14px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M20 4l-6.768 6.768" />
-              </svg>
-            </a>
-            {/* LinkedIn */}
-            <a href="#" target="_blank" className="p-1.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-              <svg viewBox="0 0 24 24" className="w-[14px] h-[14px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-          </div>
-        </div>
 
-        {/* Displacement Text - ASHUTOSH hover effect */}
-        <div className="w-full h-56 relative overflow-hidden flex items-center justify-center -mt-8 mb-0">
-          <DisplacementText
-            text="ASHUTOSH"
-            fontSize={280}
-            className="h-full w-full"
-            lightColor="#171717"
-            darkColor="#e5e5e5"
-          />
+          <div className="flex-grow h-[160px] relative flex items-center justify-end -mr-56 mt-2">
+            <DisplacementText
+              text="ASHUTOSH"
+              fontSize={300}
+              className="h-full w-full"
+              lightColor="#171717"
+              darkColor="#e5e5e5"
+            />
+          </div>
         </div>
       </div>
     </div>
