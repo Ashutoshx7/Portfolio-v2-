@@ -125,7 +125,7 @@ export function CommandMenu() {
                 onClick={() => setOpen(true)}
                 className="flex items-center text-[12px] font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors group cursor-pointer"
             >
-                <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 px-1.5 font-mono text-[10px] font-medium text-zinc-500 dark:text-zinc-400 group-hover:border-zinc-300 dark:group-hover:border-zinc-700 transition-colors">
+                <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-black/30 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900 px-1.5 font-mono text-[10px] font-medium text-zinc-500 dark:text-zinc-400 group-hover:border-zinc-300 dark:group-hover:border-zinc-700 transition-colors">
                     <span className="text-[10px] leading-none mt-[1px]">⌘</span><span className="leading-none mt-[1px]">K</span>
                 </kbd>
             </button>

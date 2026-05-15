@@ -23,8 +23,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <div className="min-h-screen w-full bg-white dark:bg-[#0a0a0a] relative overflow-x-hidden transition-colors duration-300">
       {/* Vertical Lines - Ultra-fine Micro Dots */}
-      <div className="absolute top-0 bottom-0 left-[31%] w-0 border-r border-zinc-200 dark:border-zinc-800 pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute top-0 bottom-0 right-[31%] w-0 border-r border-zinc-200 dark:border-zinc-800 pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute top-0 bottom-0 left-[31%] w-0 border-r border-black/30 dark:border-white/10 pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute top-0 bottom-0 right-[31%] w-0 border-r border-black/30 dark:border-white/10 pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
 
       <div className="relative z-20 flex justify-center py-16">
         <div className="w-[38%] min-w-[320px] relative flex flex-col gap-8">
@@ -36,7 +36,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             Back to Home
           </Link>
           
-          <div className="flex flex-col gap-6 relative bg-white/50 dark:bg-[#0a0a0a]/50 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm backdrop-blur-md">
+          <div className="flex flex-col gap-6 relative bg-white/50 dark:bg-[#0a0a0a]/50 p-6 rounded-2xl border border-black/30 dark:border-white/10 shadow-sm backdrop-blur-md">
             <div className="flex items-center justify-between">
               <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">{project.title}</h1>
               <div className="flex items-center gap-3">

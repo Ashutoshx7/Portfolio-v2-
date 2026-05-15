@@ -81,7 +81,7 @@ export function ExperienceList() {
             {/* Dashed bottom border for all items except the last one */}
             {!isLast && (
               <div
-                className="absolute bottom-0 left-[-16px] right-[-16px] h-0 border-b border-zinc-200 dark:border-zinc-800 pointer-events-none z-10"
+                className="absolute bottom-0 left-[-16px] right-[-16px] h-0 border-b border-black/30 dark:border-white/10 pointer-events-none z-10"
                 style={{
                   maskImage:
                     "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -95,7 +95,7 @@ export function ExperienceList() {
             {isLast && (
               <>
                 <div
-                  className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-zinc-200 dark:border-zinc-800 pointer-events-none z-10"
+                  className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/10 pointer-events-none z-10"
                   style={{
                     maskImage:
                       "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -103,8 +103,8 @@ export function ExperienceList() {
                       "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
                   }}
                 />
-                <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
-                <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+                <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/20 -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+                <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/20 translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
               </>
             )}
 

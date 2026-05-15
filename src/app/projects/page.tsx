@@ -26,8 +26,8 @@ export default function AllProjectsPage() {
         <div className="w-[38%] min-w-[320px] relative">
           
           {/* Vertical Lines - Hugging the exact container width to prevent overlap */}
-          <div className="absolute top-[-100vh] bottom-[-100vh] left-0 w-0 border-l border-zinc-200 dark:border-zinc-800 pointer-events-none z-0" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute top-[-100vh] bottom-[-100vh] right-0 w-0 border-r border-zinc-200 dark:border-zinc-800 pointer-events-none z-0" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          <div className="absolute top-[-100vh] bottom-[-100vh] left-0 w-0 border-l border-black/30 dark:border-white/10 pointer-events-none z-0" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          <div className="absolute top-[-100vh] bottom-[-100vh] right-0 w-0 border-r border-black/30 dark:border-white/10 pointer-events-none z-0" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
 
           <Link href="/" className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors mb-8 group relative z-50">
             <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -44,9 +44,9 @@ export default function AllProjectsPage() {
 
           <div className="relative pt-6 pb-6 mt-4 px-4">
             {/* Center Vertical Line */}
-            <div className="absolute top-0 bottom-6 left-1/2 w-0 border-r border-zinc-200 dark:border-zinc-800 pointer-events-none -translate-x-1/2" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+            <div className="absolute top-0 bottom-6 left-1/2 w-0 border-r border-black/30 dark:border-white/10 pointer-events-none -translate-x-1/2" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
             {/* Top Center Intersection */}
-            <div className="absolute top-0 left-1/2 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
+            <div className="absolute top-0 left-1/2 w-[2px] h-[2px] bg-black/40 dark:bg-white/20 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
 
             <div className="flex flex-col relative z-10 w-full">
               {Array.from({ length: Math.ceil(projectsData.length / 2) }).map((_, rowIndex) => {
@@ -61,10 +61,10 @@ export default function AllProjectsPage() {
                     {/* Horizontal Divider after each row except the last one */}
                     {rowIndex < Math.ceil(projectsData.length / 2) - 1 && (
                       <div className="relative w-full h-0 hidden md:block">
-                        <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-zinc-200 dark:border-zinc-800 pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-                        <div className="absolute -left-4 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
-                        <div className="absolute -right-4 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
-                        <div className="absolute left-1/2 w-[2px] h-[2px] bg-zinc-300 dark:bg-zinc-600 -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+                        <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/10 pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+                        <div className="absolute -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/20 -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+                        <div className="absolute -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/20 translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+                        <div className="absolute left-1/2 w-[2px] h-[2px] bg-black/40 dark:bg-white/20 -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
                       </div>
                     )}
                   </div>
