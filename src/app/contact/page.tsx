@@ -280,7 +280,7 @@ export default function ContactPage() {
         </div>
 
         {/* Displacement Text - ASHUTOSH hover effect */}
-        <div className="w-full h-64 relative overflow-hidden flex items-center justify-center -mt-4 mb-8">
+        <div className="w-full h-56 relative overflow-hidden flex items-center justify-center -mt-8 mb-0">
           <DisplacementText
             text="ASHUTOSH"
             fontSize={280}
