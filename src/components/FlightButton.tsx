@@ -141,7 +141,7 @@ export function FlightButton({ className, onClick, ...props }: FlightButtonProps
         onClick={handleClick}
         {...props}
     >
-      <span className={styles.defaultText}>Send</span>
+      <span className={styles.defaultText}>Send Message</span>
       <span className={styles.successText}>
         <svg viewBox="0 0 24 24">
           <line x1="22" y1="2" x2="11" y2="13"></line>

@@ -1,56 +1,34 @@
 .button {
   /* =========================================
-     LIGHT MODE - Tasteful & Subtle Button
-     BUT -> Dark Plane (#171717)
+     LIGHT MODE - 'View All' Premium Aesthetic
      ========================================= */
   
-  /* Core Colors */
-  --btn-color: #fafafa;      /* Neutral 50 (Button BG) */
-  --btn-border: #e5e5e5;     /* Neutral 200 */
-  --text-color: #171717;     /* Neutral 900 */
+  --btn-color: #fafafa;      /* Zinc 50 */
+  --btn-border: rgba(0, 0, 0, 0.05); /* Black/5 */
+  --text-color: #52525b;     /* Zinc 600 */
   
-  /* SINGLE SOURCE OF TRUTH for Plane Color */
-  --plane-fill-color: #171717; /* Solid Black in Light Mode */
+  --plane-fill-color: #171717;
   
-  /* Deprecated/Mapped for safety */
-  --left-plane-base: var(--plane-fill-color);
-  --left-plane-fold: var(--plane-fill-color);
-  --right-plane-base: var(--plane-fill-color);
-  --right-plane-fold: var(--plane-fill-color);
-  
-  /* Applying PLANE COLOR to animation variables (Defaults) */
-  --primary: var(--btn-color);
-  --left-wing-background: var(--left-plane-base);
-  --left-body-background: var(--left-plane-base);
-  --right-wing-background: var(--right-plane-base);
-  --right-body-background: var(--right-plane-base);
-  
-  /* Button uses subtle background */
   background: var(--btn-color);
   color: var(--text-color);
   border: 1px solid var(--btn-border);
-
-  /* Deprecated generic vars, kept for safety */
-  --primary-dark: #404040;
-  --primary-darkest: #171717;
   
-  /* Other Props */
   --text: var(--text-color);
   --text-opacity: 1;
   --success: var(--text-color);
-  --shadow: transparent;
+  --shadow: rgba(0, 0, 0, 0.2);
   --success-x: -12;
-  --success-stroke: 65; /* Increased length for plane icon */
+  --success-stroke: 65;
   --success-opacity: 0;
-  --border-radius: 7;
+  --border-radius: 6;
   --overflow: hidden;
   --x: 0;
   --y: 0;
   --rotate: 0;
   --plane-x: 0;
   --plane-y: 0;
-  --plane-opacity: 0; /* Hidden by default to prevent resting seams */
-  --trails: rgba(0, 0, 0, 0.4); /* Stronger trails */
+  --plane-opacity: 0;
+  --trails: rgba(0, 0, 0, 0.4);
   --trails-stroke: 57;
 
   /* Wing Position Vars  (51/49 overlap to prevent gaps) */
@@ -83,66 +61,38 @@
   cursor: pointer;
   position: relative;
   padding: 8px 16px;
-  min-width: auto;
+  min-width: 140px;
   text-align: center;
   margin: 0;
   line-height: 24px;
   font-family: inherit;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   outline: none;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
   transition: all 0.3s;
-  border-radius: 0.5rem;
+  border-radius: 6px;
 }
 
-.button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* =========================================
-   DARK MODE - Tasteful & Subtle Button
-   BUT -> White/Black Split Plane
-   ========================================= */
 :global(.dark) .button {
-  /* Core Colors */
-  --btn-color: #171717;      /* Neutral 900 (Button BG) */
-  --btn-border: #262626;     /* Neutral 800 */
-  --text-color: #fafafa;     /* Neutral 50 */
+  /* =========================================
+     DARK MODE - 'View All' Premium Aesthetic
+     ========================================= */
+  --btn-color: #09090b;      /* Neutral 950ish */
+  --btn-border: rgba(255, 255, 255, 0.05); /* White/5 */
+  --text-color: #a1a1aa;     /* Zinc 400 */
   
-  /* SINGLE SOURCE OF TRUTH for Plane Color */
-  --plane-fill-color: #fafafa; /* Solid White in Dark Mode */
+  --plane-fill-color: #fafafa;
 
-  /* Deprecated/Mapped for safety */
-  --left-plane-base: var(--plane-fill-color);
-  --left-plane-fold: var(--plane-fill-color);
-  --right-plane-base: var(--plane-fill-color);
-  --right-plane-fold: var(--plane-fill-color);
-  
-  /* Applying PLANE COLOR to animation variables */
-  --primary: var(--btn-color);
-  --left-wing-background: var(--left-plane-base);
-  --left-body-background: var(--left-plane-base);
-  --right-wing-background: var(--right-plane-base);
-  --right-body-background: var(--right-plane-base);
-  
-  /* Button uses subtle background */
   background: var(--btn-color);
   color: var(--text-color);
   border-color: var(--btn-border);
 
-  /* Animation Shading Colors */
-  --primary-dark: #d4d4d4;
-  --primary-darkest: #a3a3a3;
-  
-  /* Text */
   --text: var(--text-color);
   --success: var(--text-color);
   
-  --shadow: transparent;
+  --shadow: rgba(0, 0, 0, 0.8);
   --trails: rgba(255, 255, 255, 0.5); 
 }
 
@@ -185,14 +135,13 @@
   border-radius: calc(var(--border-radius) * 1px);
   transform: translate(var(--part-x, 0.4%), var(--part-y, 0)) translateZ(0);
   z-index: var(--z-index, 2);
-  background: var(--plane-fill-color); /* NUCLEAR OPTION: Force single color on all parts */
+  background: var(--plane-fill-color);
   clip-path: polygon(calc(var(--first-x, var(--left-wing-first-x)) * 1%) calc(var(--first-y, var(--left-wing-first-y)) * 1%), calc(var(--second-x, var(--left-wing-second-x)) * 1%) calc(var(--second-y, var(--left-wing-second-y)) * 1%), calc(var(--third-x, var(--left-wing-third-x)) * 1%) calc(var(--third-y, var(--left-wing-third-y)) * 1%));
 }
 
 .left:after {
   --part-x: -1%;
   --z-index: 1;
-  --background: var(--left-body-background);
   --first-x: var(--left-body-first-x);
   --first-y: var(--left-body-first-y);
   --second-x: var(--left-body-second-x);
@@ -204,7 +153,6 @@
 .right:before {
   --part-x: -1%;
   --z-index: 2;
-  --background: var(--right-wing-background);
   --first-x: var(--right-wing-first-x);
   --first-y: var(--right-wing-first-y);
   --second-x: var(--right-wing-second-x);
@@ -216,7 +164,6 @@
 .right:after {
   --part-x: 0;
   --z-index: 1;
-  --background: var(--right-body-background);
   --first-x: var(--right-body-first-x);
   --first-y: var(--right-body-first-y);
   --second-x: var(--right-body-second-x);
@@ -269,7 +216,7 @@
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 65px; /* Matches new plane icon perimeter */
+  stroke-dasharray: 65px;
   stroke: var(--success);
   stroke-dashoffset: calc(var(--success-stroke) * 1px);
 }

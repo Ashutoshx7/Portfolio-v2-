@@ -6,10 +6,10 @@ import { CommandMenu } from "@/components/command-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { CurrentTime } from "@/components/CurrentTime";
 import { RightNavbar } from "@/components/RightNavbar";
+import { FlightButton } from "@/components/FlightButton";
 import DisplacementText from "@/components/DisplacementText";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import gsap from "gsap";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -18,9 +18,6 @@ export default function ContactPage() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSent, setIsSent] = useState(false);
-  const planeRef = useRef<SVGSVGElement>(null);
-  const btnRef = useRef<HTMLButtonElement>(null);
 
   const isFormValid =
     formData.name.trim() !== "" &&
@@ -29,20 +26,8 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isSubmitting || isSent) return;
+    if (isSubmitting) return;
     setIsSubmitting(true);
-
-    // Animate the plane icon flying away
-    if (planeRef.current) {
-      gsap.to(planeRef.current, {
-        x: 60,
-        y: -40,
-        opacity: 0,
-        scale: 0.5,
-        duration: 0.5,
-        ease: "power2.in",
-      });
-    }
 
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -57,30 +42,13 @@ export default function ContactPage() {
       );
 
       if (response.ok) {
-        setIsSent(true);
         form.reset();
         setFormData({ name: "", email: "", message: "" });
-
-        // Reset after 3 seconds
-        setTimeout(() => {
-          setIsSent(false);
-          setIsSubmitting(false);
-          if (planeRef.current) {
-            gsap.set(planeRef.current, { x: 0, y: 0, opacity: 1, scale: 1 });
-          }
-        }, 3000);
-      } else {
-        setIsSubmitting(false);
-        if (planeRef.current) {
-          gsap.set(planeRef.current, { x: 0, y: 0, opacity: 1, scale: 1 });
-        }
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+    } finally {
       setIsSubmitting(false);
-      if (planeRef.current) {
-        gsap.set(planeRef.current, { x: 0, y: 0, opacity: 1, scale: 1 });
-      }
     }
   };
 
@@ -209,33 +177,15 @@ export default function ContactPage() {
             />
           </div>
 
-          {/* Send Message Button - View All style */}
+          {/* FlightButton with airplane animation - wrapped in premium border */}
           <div className="flex justify-center w-full pt-4">
             <div className="relative group">
               <div className="absolute -inset-[5px] border border-black/5 dark:border-white/5 rounded-[11px] pointer-events-none transition-colors duration-300 group-hover:border-black/10 dark:group-hover:border-white/10" />
-              <button
-                ref={btnRef}
+              <FlightButton
                 type="submit"
-                disabled={isSubmitting || !isFormValid || isSent}
-                className="relative flex items-center gap-1.5 px-4 py-2 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#09090b] dark:hover:bg-[#121214] text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-[6px] text-[13px] font-medium transition-all duration-300 border border-black/5 dark:border-white/5 shadow-sm shadow-black/20 dark:shadow-lg dark:shadow-black/80 disabled:opacity-40 disabled:cursor-not-allowed overflow-hidden"
-              >
-                {isSent ? (
-                  <>
-                    Sent
-                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </>
-                ) : (
-                  <>
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                    <svg ref={planeRef} viewBox="0 0 24 24" className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <line x1="22" y1="2" x2="11" y2="13"></line>
-                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                  </>
-                )}
-              </button>
+                disabled={isSubmitting || !isFormValid}
+                className="!relative !bg-zinc-50 dark:!bg-[#09090b] !border-black/5 dark:!border-white/5 !shadow-sm !shadow-black/20 dark:!shadow-lg dark:!shadow-black/80 !rounded-[6px] !px-4 !py-2 !text-[13px] !font-medium !transition-all !duration-300 hover:!bg-zinc-100 dark:hover:!bg-[#121214]"
+              />
             </div>
           </div>
         </form>
