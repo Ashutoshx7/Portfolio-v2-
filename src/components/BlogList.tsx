@@ -53,7 +53,7 @@ export function BlogList() {
             {/* Dashed bottom border for all items except the last one */}
             {!isLast && (
               <div
-                className="absolute bottom-0 left-0 right-0 h-0 border-b border-black/30 dark:border-white/10 pointer-events-none z-10"
+                className="absolute bottom-0 left-0 right-0 h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none z-10"
                 style={{
                   maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
                   WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -65,14 +65,14 @@ export function BlogList() {
             {isLast && (
               <>
                 <div
-                  className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/10 pointer-events-none z-10"
+                  className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none z-10"
                   style={{
                     maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
                     WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
                   }}
                 />
-                <div className="absolute bottom-0 left-0 w-[2px] h-[2px] bg-black/40 dark:bg-white/20 -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
-                <div className="absolute bottom-0 right-0 w-[2px] h-[2px] bg-black/40 dark:bg-white/20 translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+                <div className="absolute bottom-0 left-0 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+                <div className="absolute bottom-0 right-0 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
               </>
             )}
 
@@ -100,7 +100,7 @@ export function BlogList() {
                     {blog.tags.map((tag, tagIdx) => (
                       <span
                         key={tagIdx}
-                        className="px-2 py-0.5 rounded-[4px] border border-black/30 dark:border-white/10 text-[11px] text-zinc-600 dark:text-zinc-400 bg-white/50 dark:bg-black/20"
+                        className="px-2 py-0.5 rounded-[4px] border border-black/30 dark:border-white/[0.15] text-[11px] text-zinc-600 dark:text-zinc-400 bg-white/50 dark:bg-black/20"
                       >
                         {tag}
                       </span>

@@ -47,7 +47,7 @@ export function TopNavbar() {
     <nav className="fixed top-2 right-[31%] z-[100] pointer-events-auto">
       <div
         className={`flex items-center gap-5 px-5 py-2.5 rounded-full transition-all duration-300 ${scrolled
-          ? "bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-black/5 dark:border-white/10"
+          ? "bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-black/5 dark:border-white/[0.15]"
           : "bg-transparent border border-transparent"
           }`}
       >
