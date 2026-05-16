@@ -28,7 +28,7 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
     const fetchPRs = async () => {
       const cacheKey = `github_prs_${filterType}`;
       const cachedData = typeof window !== 'undefined' ? localStorage.getItem(cacheKey) : null;
-      
+
       if (cachedData) {
         try {
           setPrs(JSON.parse(cachedData));
@@ -89,7 +89,7 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
             localStorage.setItem(cacheKey, JSON.stringify(fetchedPRs));
           }
         } else {
-            console.error("GraphQL response missing expected data structure", data);
+          console.error("GraphQL response missing expected data structure", data);
         }
       } catch (error) {
         console.error("Failed to fetch PRs:", error);
@@ -105,7 +105,7 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
     <div className="w-full flex flex-col">
       <div className="py-2 relative flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h2 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">Open Source Contributions</h2>
-        
+
         {/* Toggle */}
         <div className="flex items-center gap-2 relative z-20 group mr-[8px]">
           <div className="absolute -inset-[5px] border border-black/5 dark:border-white/5 rounded-[11px] pointer-events-none transition-colors duration-300 group-hover:border-black/10 dark:group-hover:border-white/10" />
@@ -147,39 +147,40 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
             {prs.slice(0, isFullPage ? prs.length : initialCount).filter(pr => !closedPRIds.has(pr.id)).map((pr, idx, arr) => {
               const isLast = idx === arr.length - 1;
               return (
-              <a
-                key={pr.id}
-                href={pr.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex flex-col gap-1.5 py-4 px-4 -mx-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/20 rounded-lg"
-              >
-                {!isLast && (
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-0 border-b border-black/30 dark:border-white/10 pointer-events-none z-10"
-                    style={{
-                      maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                      WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                    }}
-                  />
-                )}
-                <div className="flex items-center gap-2.5 relative z-20 min-w-0">
-                  <div className={`w-2 h-2 rounded-full shrink-0 ${pr.state === "MERGED"
-                    ? "bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.4)]"
-                    : pr.state === "OPEN"
-                      ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"
-                      : "bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.4)]"
-                    }`}></div>
-                  <h3 className="text-[14px] font-medium text-zinc-800 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors truncate">
-                    {pr.title}
-                  </h3>
-                </div>
-                <p className="text-[12px] text-zinc-500 dark:text-zinc-400 ml-4.5 pl-0.5 relative z-20">
-                  {pr.repository.nameWithOwner}
-                </p>
-              </a>
-            )})}
-            
+                <a
+                  key={pr.id}
+                  href={pr.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex flex-col gap-1.5 py-4 px-4 -mx-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/20 rounded-lg"
+                >
+                  {!isLast && (
+                    <div
+                      className="absolute bottom-0 left-0 right-0 h-0 border-b border-black/30 dark:border-white/10 pointer-events-none z-10"
+                      style={{
+                        maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
+                        WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
+                      }}
+                    />
+                  )}
+                  <div className="flex items-center gap-2.5 relative z-20 min-w-0">
+                    <div className={`w-2 h-2 rounded-full shrink-0 ${pr.state === "MERGED"
+                      ? "bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.4)]"
+                      : pr.state === "OPEN"
+                        ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"
+                        : "bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.4)]"
+                      }`}></div>
+                    <h3 className="text-[14px] font-medium text-zinc-800 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors truncate">
+                      {pr.title}
+                    </h3>
+                  </div>
+                  <p className="text-[12px] text-zinc-500 dark:text-zinc-400 ml-4.5 pl-0.5 relative z-20">
+                    {pr.repository.nameWithOwner}
+                  </p>
+                </a>
+              )
+            })}
+
             {!isFullPage && prs.length > initialCount && (
               <div className="flex justify-center mt-4 relative z-20">
                 <Link href="/pull-requests" className="relative group block">

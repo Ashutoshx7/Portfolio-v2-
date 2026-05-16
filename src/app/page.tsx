@@ -123,8 +123,8 @@ export default function Home() {
 
         {/* Buttons */}
         <div className="flex flex-wrap items-center gap-2 mt-4">
-          <Link href="/contact" className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-800 dark:text-zinc-200 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+          <Link href="/contact" className="group flex items-center gap-1.5 px-2.5 py-[5px] rounded-md text-[12px] font-medium transition-all duration-500 ease-out bg-zinc-50/80 dark:bg-zinc-900/40 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 border border-black/[0.04] dark:border-white/[0.04] shadow-[0_1px_2px_rgba(0,0,0,0.02)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)] hover:-translate-y-[0.5px] hover:bg-white dark:hover:bg-zinc-800/60 hover:border-black/[0.08] dark:hover:border-white/[0.08]">
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 opacity-50 group-hover:opacity-80 transition-opacity duration-400" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -132,8 +132,8 @@ export default function Home() {
             </svg>
             Book an intro call
           </Link>
-          <Link href="/contact" className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-800 dark:text-zinc-200 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+          <Link href="/contact" className="group flex items-center gap-1.5 px-2.5 py-[5px] rounded-md text-[12px] font-medium transition-all duration-500 ease-out bg-zinc-50/80 dark:bg-zinc-900/40 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 border border-black/[0.04] dark:border-white/[0.04] shadow-[0_1px_2px_rgba(0,0,0,0.02)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)] hover:-translate-y-[0.5px] hover:bg-white dark:hover:bg-zinc-800/60 hover:border-black/[0.08] dark:hover:border-white/[0.08]">
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 opacity-50 group-hover:opacity-80 transition-opacity duration-400" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
@@ -151,10 +151,23 @@ export default function Home() {
               { name: 'LinkedIn', href: 'https://www.linkedin.com/in/ashutosh-singh-855177329/', icon: <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="2" fill="none"></path> },
               { name: 'Medium', href: '#', icon: <path d="M12 12c0 3.31-2.69 6-6 6s-6-2.69-6-6 2.69-6 6-6 6 2.69 6 6zm11.5 0c0 3.15-1.12 5.71-2.5 5.71s-2.5-2.56-2.5-5.71 1.12-5.71 2.5-5.71 2.5 2.56 2.5 5.71zm-5.71 0c0 3.25-1.92 5.88-4.29 5.88s-4.29-2.63-4.29-5.88 1.92-5.88 4.29-5.88 4.29 2.63 4.29 5.88z" fill="currentColor"></path> },
               { name: 'Discord', href: '#', icon: <path d="M18 5c-1.5-.7-3.2-1-5-1s-3.5.3-5 1c-1.5 3.5-2.5 8-2.5 8 1.5 2 4.5 3 7.5 3s6-1 7.5-3c0 0-1-4.5-2.5-8zM9 13c-.8 0-1.5-.7-1.5-1.5S8.2 10 9 10s1.5.7 1.5 1.5S9.8 13 9 13zm6 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z" fill="currentColor"></path> },
-              { name: 'More', href: '#', icon: <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" fill="none"></path> },
             ].map((social, i) => (
-              <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-1.5 px-2.5 py-[5px] rounded-md text-[12px] font-medium transition-all duration-500 ease-out
+                  bg-zinc-50/80 dark:bg-zinc-900/40
+                  text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200
+                  border border-black/[0.04] dark:border-white/[0.04]
+                  shadow-[0_1px_2px_rgba(0,0,0,0.02)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.2)]
+                  hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)]
+                  hover:-translate-y-[0.5px]
+                  hover:bg-white dark:hover:bg-zinc-800/60
+                  hover:border-black/[0.08] dark:hover:border-white/[0.08]"
+              >
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 opacity-50 group-hover:opacity-80 transition-opacity duration-400">
                   {social.icon}
                 </svg>
                 {social.name}

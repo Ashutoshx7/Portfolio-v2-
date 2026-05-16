@@ -53,12 +53,12 @@ export function RightNavbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-[12px] font-medium tracking-[0.05em] transition-all duration-700 ease-out flex items-center gap-3 ${isActive
+              className={`text-[12px] font-medium tracking-[0.05em] transition-all duration-300 ease-out flex items-center gap-3 ${isActive
                   ? "text-zinc-800 dark:text-zinc-200"
                   : "text-zinc-400 dark:text-zinc-600 hover:text-zinc-600 dark:hover:text-zinc-400"
                 }`}
             >
-              <span className={`h-[1px] transition-all duration-700 ease-out ${isActive
+              <span className={`h-[1px] transition-all duration-300 ease-out ${isActive
                   ? "w-3 bg-zinc-300 dark:bg-zinc-700"
                   : "w-0 bg-transparent"
                 }`} />

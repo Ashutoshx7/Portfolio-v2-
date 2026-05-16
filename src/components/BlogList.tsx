@@ -81,13 +81,13 @@ export function BlogList() {
                 <h3 className="text-[14px] md:text-[15px] font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {blog.title}
                 </h3>
-                
+
                 <div className="flex flex-wrap items-center gap-4 text-[12px] text-zinc-500 dark:text-zinc-400">
                   <div className="flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5" />
                     <span>{blog.date}</span>
                   </div>
-                  
+
                   <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-500 font-medium">
                     <RealClapIcon className="w-3.5 h-3.5" />
                     <span>{blog.claps}</span>
