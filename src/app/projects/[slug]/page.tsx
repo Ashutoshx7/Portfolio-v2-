@@ -76,8 +76,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <h1 className="text-[20px] sm:text-[24px] font-bold text-zinc-800 dark:text-zinc-100 tracking-tight leading-none mb-0.5 [text-shadow:-1.5px_0_0_rgba(0,200,255,0.3),1.5px_0_0_rgba(255,80,0,0.3)] dark:[text-shadow:-1.5px_0_0_rgba(0,200,255,0.6),1.5px_0_0_rgba(255,80,0,0.6)]">
                 {project.title}
               </h1>
-              <p className="text-[12px] text-zinc-500 dark:text-zinc-400">
-                Project Details
+              <p className="text-[12px] text-zinc-500 dark:text-zinc-400 font-medium">
+                Projects/{project.title}
               </p>
             </div>
           </div>
@@ -93,99 +93,121 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* Content Section */}
       <div className="ml-[31%] mr-[31%] pt-[calc(22vh+112px)] pb-16 px-4 flex flex-col z-10 relative">
 
+        {/* Media (Video or Image) right at the top */}
+        <div className="w-full aspect-video relative mt-8 rounded-lg overflow-hidden border border-black/10 dark:border-white/[0.15] shadow-sm bg-black z-20">
+          {project.video ? (
+            project.video.includes('youtube') ? (
+              <iframe
+                src={project.video}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <video 
+                src={project.video} 
+                className="w-full h-full object-cover" 
+                controls 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+              />
+            )
+          ) : (
+            <Image 
+              src={project.src} 
+              alt={project.imageTitle} 
+              fill 
+              className="object-cover"
+              priority
+            />
+          )}
+        </div>
+
+        {/* Top Dashed Divider (Blueprint system) */}
+        <div className="relative mt-8">
+          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
+          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
+        </div>
+
+        {/* Action Links Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 items-center justify-between py-4 relative">
+          {project.github ? (
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-[13px] font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+              <SiGithub className="w-4 h-4" /> Github
+            </a>
+          ) : <div />}
+          
+          {/* Vertical Divider 1 */}
+          <div className="hidden md:block absolute left-1/3 top-0 bottom-0 w-0 border-l border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+
+          {project.live ? (
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-[13px] font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+              <ExternalLink className="w-4 h-4" /> Website
+            </a>
+          ) : <div />}
+          
+          {/* Vertical Divider 2 */}
+          <div className="hidden md:block absolute left-2/3 top-0 bottom-0 w-0 border-l border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+
+          <a href="#" className="hidden md:flex items-center justify-center gap-2 text-[13px] font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="9" x2="15" y1="9" y2="9"/><line x1="9" x2="15" y1="15" y2="15"/></svg>
+            Post
+          </a>
+        </div>
+
+        {/* Bottom Dashed Divider */}
+        <div className="relative mb-6">
+          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
+          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
+        </div>
+
+        {/* Title and Status */}
+        <div className="flex items-center justify-between w-full mb-4">
+          <h1 className="text-[24px] sm:text-[28px] font-bold text-zinc-900 dark:text-zinc-50 tracking-tight leading-none">
+            {project.title}
+          </h1>
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-[13px] font-medium text-emerald-600 dark:text-emerald-400">Live</span>
+          </div>
+        </div>
+
         {/* Description */}
-        <p className="text-[14px] sm:text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400 mt-4">
+        <p className="text-[14px] sm:text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300">
           {project.description}
         </p>
 
-        {/* Links */}
-        <div className="flex items-center gap-2 mt-4">
-          {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
-              <SiGithub className="w-3.5 h-3.5" />
-              Source Code
-            </a>
-          )}
-          {project.live && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
-              <ExternalLink className="w-3.5 h-3.5" />
-              Live Demo
-            </a>
-          )}
+        {/* Dashed Divider before Stack */}
+        <div className="relative mt-8 mb-6">
+          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
+          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
         </div>
 
         {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mt-6">
-          {project.tech.map((t: TechItem, i: number) => {
-            const isKey = typeof t === "string";
-            const label = isKey ? techNames[t as TechKey] : t.label;
-            const Icon = isKey ? iconMap[t as TechKey] : null;
+        <div>
+          <h2 className="text-[16px] font-bold text-zinc-900 dark:text-zinc-50 tracking-tight mb-4">Stack used</h2>
+          <div className="flex flex-wrap gap-2">
+            {project.tech.map((t: TechItem, i: number) => {
+              const isKey = typeof t === "string";
+              const label = isKey ? techNames[t as TechKey] : t.label;
+              const Icon = isKey ? iconMap[t as TechKey] : null;
 
-            return (
-              <div key={i} className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 border border-zinc-200/50 dark:border-zinc-700/50">
-                {Icon && <Icon className="w-3.5 h-3.5" />}
-                <span>{label}</span>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Separator */}
-        <div className="relative mt-8">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-        </div>
-
-        {/* Project Image */}
-        <div className="w-full aspect-video relative mt-8 rounded-lg overflow-hidden border border-black/10 dark:border-white/[0.15] shadow-sm">
-          <Image 
-            src={project.src} 
-            alt={project.imageTitle} 
-            fill 
-            className="object-cover"
-            priority
-          />
-        </div>
-        
-        {/* Video */}
-        {project.video && (
-          <>
-            {/* Separator before video */}
-            <div className="relative mt-8">
-              <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-              <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-              <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-            </div>
-
-            <div className="w-full aspect-video relative mt-8 rounded-lg overflow-hidden border border-black/10 dark:border-white/[0.15] shadow-sm bg-black">
-              {project.video.includes('youtube') ? (
-                <iframe
-                  src={project.video}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              ) : (
-                <video 
-                  src={project.video} 
-                  className="w-full h-full object-cover" 
-                  controls 
-                  autoPlay 
-                  muted 
-                  loop 
-                  playsInline 
-                />
-              )}
-            </div>
-          </>
-        )}
-
-        {/* Bottom Separator */}
-        <div className="relative mt-8">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
+              return (
+                <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/5 rounded-md text-[12px] font-medium text-zinc-700 dark:text-zinc-300">
+                  {Icon && <Icon className="w-3.5 h-3.5" />}
+                  <span>{label}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
