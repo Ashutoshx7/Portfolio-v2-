@@ -45,7 +45,7 @@ const skills = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-[#0a0a0a] relative overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen w-full bg-white dark:bg-black relative overflow-x-hidden transition-colors duration-300">
 
       {/* Right Side Blueprint Navigation */}
       <RightNavbar />
@@ -74,10 +74,18 @@ export default function Home() {
           }} />
       ))}
 
-      {/* Cell 1: Nothing Design Dot Matrix Background */}
-      <div className="absolute left-0 right-0 md:left-[31%] md:right-[31%] top-0 h-[22vh] -z-0 pointer-events-auto">
-        <FooterBackground />
-
+      {/* Cell 1: Banner */}
+      <div className="absolute left-0 right-0 md:left-[31%] md:right-[31%] top-0 h-[22vh] -z-0 pointer-events-auto overflow-hidden bg-white dark:bg-black">
+        <img
+          src="/ChatGPT%20Image%20May%2022%2C%202026%2C%2012_40_29%20AM.png"
+          alt="Light mode banner"
+          className="w-full h-full object-cover object-center dark:hidden"
+        />
+        <img
+          src="/ChatGPT%20Image%20May%2022%2C%202026%2C%2012_49_39%20AM.png"
+          alt="Dark mode banner"
+          className="hidden w-full h-full object-cover object-center dark:block"
+        />
         <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
           <CurrentTime />
         </div>

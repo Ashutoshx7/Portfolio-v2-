@@ -85,7 +85,7 @@
 }
 
 .dark {
-  --color-background: #0a0a0a;
+  --color-background: #000000;
   --color-foreground: #fafafa;
   --color-popover: #09090b;
   --color-popover-foreground: #fafafa;
