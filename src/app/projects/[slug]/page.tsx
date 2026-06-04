@@ -91,7 +91,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* Content Section */}
-      <div className="ml-0 mr-0 md:ml-[31%] md:mr-[31%] pt-[calc(22vh+112px)] pb-16 px-4 flex flex-col z-10 relative">
+      <div className="ml-0 mr-0 md:ml-[33%] md:mr-[33%] pt-[calc(22vh+112px)] pb-16 px-8 md:px-10 flex flex-col z-10 relative">
 
         {/* Media (Video or Image) right at the top */}
         <div className="w-full aspect-video relative mt-8 rounded-lg overflow-hidden border border-black/10 dark:border-white/[0.15] shadow-sm bg-black z-20">

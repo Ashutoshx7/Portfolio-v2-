@@ -140,7 +140,7 @@ export default function ContactPage() {
       </div>
 
       {/* Content Section */}
-      <div className="ml-0 mr-0 md:ml-[31%] md:mr-[31%] pt-[calc(22vh+112px)] pb-0 px-8 md:px-12 flex flex-col z-10 relative">
+      <div className="ml-0 mr-0 md:ml-[33%] md:mr-[33%] pt-[calc(22vh+112px)] pb-0 px-8 md:px-12 flex flex-col z-10 relative">
         {/* Form */}
         <form onSubmit={handleSubmit} className="mt-12 space-y-10">
           {/* FormSubmit Configuration */}

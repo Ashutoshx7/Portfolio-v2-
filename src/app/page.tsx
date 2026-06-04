@@ -125,7 +125,7 @@ export default function Home() {
       </div>
 
       {/* Flowing Content Section */}
-      <div className="ml-0 mr-0 md:ml-[31%] md:mr-[31%] pt-[calc(22vh+112px)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
+      <div className="ml-0 mr-0 md:ml-[33%] md:mr-[33%] pt-[calc(22vh+112px)] pb-0 px-8 md:px-10 flex flex-col z-10 relative min-h-screen">
         <p className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4">
           Engineer / Artist. I love building, breaking, and shipping things.
         </p>

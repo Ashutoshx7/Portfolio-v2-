@@ -149,7 +149,7 @@ export default function AllExperiencePage() {
         initial={{ opacity: 0, filter: "blur(8px)", y: 12 }}
         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-        className="ml-0 mr-0 md:ml-[31%] md:mr-[31%] pt-[calc(22vh+112px)] pb-16 px-0 flex flex-col z-10 relative"
+        className="ml-0 mr-0 md:ml-[33%] md:mr-[33%] pt-[calc(22vh+112px)] pb-16 px-8 md:px-10 flex flex-col z-10 relative"
       >
         <div className="relative pt-0 pb-6 px-4">
 
