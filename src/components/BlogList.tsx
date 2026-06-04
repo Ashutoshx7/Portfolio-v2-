@@ -76,9 +76,9 @@ export function BlogList() {
               </>
             )}
 
-            <div className="flex justify-between items-center w-full">
+            <div className="flex items-start sm:items-center justify-between w-full">
               <div className="flex flex-col gap-2.5">
-                <h3 className="text-[14px] md:text-[15px] font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="text-[14px] md:text-[15px] font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors pr-6">
                   {blog.title}
                 </h3>
 

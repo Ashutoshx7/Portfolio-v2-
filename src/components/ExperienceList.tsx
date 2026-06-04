@@ -109,11 +109,11 @@ export function ExperienceList() {
             )}
 
             <div
-              className="flex items-center justify-between py-4 px-4 -mx-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20 rounded-lg"
+              className="flex items-start sm:items-center justify-between py-4 px-4 -mx-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20 rounded-lg"
               onClick={() => setOpenIdx(isOpen ? null : idx)}
             >
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-[10px] border border-black/10 dark:border-zinc-800 p-[2px] bg-zinc-50 dark:bg-[#111111] shrink-0 shadow-sm dark:shadow-md dark:shadow-black/50">
+              <div className="flex items-start sm:items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                <div className="w-10 h-10 rounded-[10px] border border-black/10 dark:border-zinc-800 p-[2px] bg-zinc-50 dark:bg-[#111111] shrink-0 shadow-sm dark:shadow-md dark:shadow-black/50 mt-[3px] sm:mt-0">
                   <div className="w-full h-full rounded-[7px] border border-black/5 dark:border-black/20 bg-white flex items-center justify-center overflow-hidden relative">
                     <Image
                       src={item.src}
@@ -125,28 +125,28 @@ export function ExperienceList() {
                     />
                   </div>
                 </div>
-                <div className="flex flex-col gap-0.5">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[17px] font-bold text-zinc-900 dark:text-zinc-100">
+                <div className="flex flex-col gap-0.5 min-w-0 pr-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-[15px] sm:text-[17px] font-bold text-zinc-900 dark:text-zinc-100 truncate">
                       {item.title}
                     </span>
                     {item.type && (
-                      <span className="px-1.5 py-[1px] rounded-[4px] text-[11px] font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-300/50 dark:border-zinc-700/50">
+                      <span className="px-1.5 py-[1px] rounded-[4px] text-[11px] font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-300/50 dark:border-zinc-700/50 whitespace-nowrap">
                         {item.type}
                       </span>
                     )}
                   </div>
-                  <span className="text-[15px] text-zinc-600 dark:text-zinc-400">
+                  <span className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-400 truncate">
                     {item.role}
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col items-end gap-0.5 text-right pr-5">
-                <div className="flex items-center text-[14px] font-medium text-zinc-900 dark:text-zinc-100 relative">
+              <div className="flex flex-col items-end gap-0.5 text-right pr-5 mt-[3px] sm:mt-0 shrink-0">
+                <div className="flex items-center text-[13px] sm:text-[14px] font-medium text-zinc-900 dark:text-zinc-100 relative">
                   <span>{item.dates}</span>
                   <svg
                     viewBox="0 0 24 24"
-                    className={`w-3.5 h-3.5 text-zinc-500 absolute -right-5 top-1/2 -translate-y-1/2 transition-transform duration-300 ${isOpen ? "rotate-180" : ""
+                    className={`w-3.5 h-3.5 text-zinc-500 absolute -right-5 top-1/2 -translate-y-1/2 -mt-[1.5px] transition-transform duration-300 ${isOpen ? "rotate-180" : ""
                       }`}
                     fill="none"
                     stroke="currentColor"
@@ -155,7 +155,7 @@ export function ExperienceList() {
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </div>
-                <span className="text-[14px] text-zinc-500 dark:text-zinc-400">
+                <span className="text-[13px] sm:text-[14px] text-zinc-500 dark:text-zinc-400">
                   {item.location}
                 </span>
               </div>

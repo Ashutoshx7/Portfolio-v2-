@@ -151,16 +151,16 @@ export const ProjectCard = ({ project, setActiveVideo }: { project: Project; set
 
       {/* Content Area directly below the wrapper */}
       <div className="mt-4 flex flex-col px-0.5">
-        <div className="flex items-center justify-between">
-          <h3 className="text-[15px] font-bold text-zinc-900 dark:text-zinc-100">{project.title}</h3>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
+          <h3 className="text-[15px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">{project.title}</h3>
 
-          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-zinc-200/50 dark:border-zinc-800/50 bg-white dark:bg-zinc-900/50">
+          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-zinc-200/50 dark:border-zinc-800/50 bg-white dark:bg-zinc-900/50 w-fit shrink-0">
             <div className={`w-1.5 h-1.5 rounded-full ${statusColor}`} />
             <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">{statusLabel}</span>
           </div>
         </div>
 
-        <p className="mt-1.5 text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed pr-2">
+        <p className="mt-2 sm:mt-1.5 text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed pr-2">
           {project.description}
         </p>
 
