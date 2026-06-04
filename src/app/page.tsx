@@ -104,7 +104,7 @@ export default function Home() {
             <div className="relative p-[3px] rounded-[6px] sm:rounded-[8px] border-[1.5px] border-black/30 dark:border-white/[0.15] shrink-0">
               {/* The inner image */}
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
-                <img src="https://github.com/ashutoshx7.png" alt="Profile" className="w-full h-full object-cover scale-[1.18] origin-center grayscale opacity-90 contrast-100 mix-blend-multiply dark:mix-blend-normal" />
+                <img src="https://github.com/ashutoshx7.png" alt="Profile" className="w-full h-full object-cover scale-[1.18] translate-y-1 origin-center grayscale opacity-90 contrast-100 mix-blend-multiply dark:mix-blend-normal" />
               </div>
             </div>
 
