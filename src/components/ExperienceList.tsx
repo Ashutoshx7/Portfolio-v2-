@@ -183,7 +183,7 @@ export function ExperienceList() {
               onClick={() => setOpenIdx(isOpen ? null : idx)}
             >
               <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
-                <div className="w-10 h-10 rounded-[10px] border border-black/10 dark:border-zinc-800 p-[2px] bg-zinc-50 dark:bg-[#111111] shrink-0 shadow-sm dark:shadow-md dark:shadow-black/50">
+                <div className="size-10 shrink-0 rounded-[10px] border border-black/10 bg-zinc-50 p-[2px] shadow-sm shadow-black/15 dark:border-zinc-800 dark:bg-[#111111] dark:shadow-md dark:shadow-black/50">
                   <div className="w-full h-full rounded-[7px] border border-black/5 dark:border-black/20 bg-white flex items-center justify-center overflow-hidden relative">
                     <Image
                       src={item.src}
@@ -207,15 +207,15 @@ export function ExperienceList() {
                             x
                           </span>
                           <span className="inline-flex h-10 items-center gap-2 leading-none">
-                            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] border border-black/10 bg-zinc-50 p-[2px] shadow-sm shadow-black/15 dark:border-zinc-800 dark:bg-[#111111] dark:shadow-black/50">
-                              <span className="inline-flex h-full w-full items-center justify-center rounded-[7px] border border-black/5 bg-white">
+                            <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-black/10 bg-zinc-50 p-[2px] shadow-sm shadow-black/15 dark:border-zinc-800 dark:bg-[#111111] dark:shadow-md dark:shadow-black/50">
+                              <span className="inline-flex size-full items-center justify-center overflow-hidden rounded-[7px] border border-black/5 bg-white dark:border-black/20">
                                 <Image
                                   src="/Experience-image/vengenceui-title-bg-less.png"
                                   alt=""
                                   width={113}
                                   height={96}
                                   aria-hidden="true"
-                                  className="h-5 w-auto object-contain"
+                                  className="h-5 w-auto translate-y-px rotate-180 object-contain"
                                 />
                               </span>
                             </span>
@@ -231,7 +231,7 @@ export function ExperienceList() {
                       )}
                     </span>
                     {item.type && (
-                      <span className="px-1.5 py-[1px] rounded-[4px] text-[11px] font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-300/50 dark:border-zinc-700/50 whitespace-nowrap">
+                      <span className="self-center px-1.5 py-[1px] rounded-[4px] text-[11px] font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-300/50 dark:border-zinc-700/50 whitespace-nowrap">
                         {item.type}
                       </span>
                     )}
