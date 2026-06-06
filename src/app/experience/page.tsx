@@ -59,7 +59,7 @@ const experiences: ExperienceData[] = [
       { label: "Monthly Page Views", value: "120,000 - 200,000" },
       { label: "V2 Components", value: "50+" },
     ],
-    screenshot: "/Experience-image/vercel-analytics.png",
+    screenshot: "/Experience-image/vercel-analytics-color.png",
   },
   {
     title: "Open Source Contributor",
@@ -371,8 +371,8 @@ export default function AllExperiencePage() {
                             <Image
                               src={item.screenshot}
                               alt={`${item.title} analytics screenshot`}
-                              width={1186}
-                              height={646}
+                              width={1400}
+                              height={1050}
                               className="h-auto w-full object-cover"
                             />
                           </div>
