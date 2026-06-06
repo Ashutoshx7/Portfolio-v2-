@@ -32,7 +32,6 @@ const experiences: ExperienceData[] = [
     role: "Founder & Maintainer",
     dates: "Oct 2025 - Present",
     location: "Remote",
-    type: "Selected",
     src: "/Experience-image/vercel-symbol-colored-light.png",
     imageFit: "contain",
     imageZoom: 0.72,
@@ -287,14 +286,12 @@ export default function AllExperiencePage() {
                                         width={113}
                                         height={96}
                                         aria-hidden="true"
-                                        className="h-[18px] w-auto translate-y-px rotate-180 object-contain"
+                                        className="h-[18px] w-auto -translate-x-px translate-y-px rotate-180 object-contain"
                                       />
                                     </span>
                                   </span>
                                   <span className="inline-flex h-10 items-center">
-                                    <span className="vengence-title-shimmer">
-                                      VengenceUI
-                                    </span>
+                                    VengenceUI
                                   </span>
                                 </span>
                               </span>

@@ -179,47 +179,4 @@ body {
     }
   }
 
-  @keyframes vengence-title-shimmer {
-    from {
-      background-position: 220% 0;
-    }
-    to {
-      background-position: -220% 0;
-    }
-  }
-
-  .vengence-title-shimmer {
-    --vengence-title-base: rgb(9 9 11);
-    --vengence-title-mid: rgb(39 39 42);
-    --vengence-title-glint: rgb(82 82 91);
-    animation: vengence-title-shimmer 5.8s ease-in-out infinite;
-    background-image: linear-gradient(
-      100deg,
-      var(--vengence-title-base) 0%,
-      var(--vengence-title-base) 42%,
-      var(--vengence-title-mid) 48%,
-      var(--vengence-title-glint) 50%,
-      var(--vengence-title-mid) 52%,
-      var(--vengence-title-base) 58%,
-      var(--vengence-title-base) 100%
-    );
-    background-size: 260% 100%;
-    background-clip: text;
-    color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .dark .vengence-title-shimmer {
-    --vengence-title-base: rgb(250 250 250);
-    --vengence-title-mid: rgb(228 228 231);
-    --vengence-title-glint: rgb(161 161 170);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .vengence-title-shimmer {
-      animation: none;
-      background-position: 50% 0;
-    }
-  }
 }
