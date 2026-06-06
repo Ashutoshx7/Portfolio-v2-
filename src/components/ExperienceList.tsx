@@ -215,7 +215,7 @@ export function ExperienceList() {
                                   width={113}
                                   height={96}
                                   aria-hidden="true"
-                                  className="h-[21px] w-auto object-contain"
+                                  className="h-5 w-auto object-contain"
                                 />
                               </span>
                             </span>
