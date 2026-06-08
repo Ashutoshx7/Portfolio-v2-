@@ -328,6 +328,8 @@ export default function AllExperiencePage() {
                             alt={item.title}
                             width={40}
                             height={40}
+                            sizes="40px"
+                            quality={60}
                             style={item.imageZoom ? { transform: `scale(${item.imageZoom})` } : undefined}
                             className={`${item.imageFit === "contain" ? "object-contain" : "object-cover"} w-full h-full p-0.5`}
                           />
@@ -352,6 +354,8 @@ export default function AllExperiencePage() {
                                         alt=""
                                         width={113}
                                         height={96}
+                                        sizes="40px"
+                                        quality={60}
                                         aria-hidden="true"
                                         className="h-[18px] w-auto -translate-x-px translate-y-px rotate-180 object-contain"
                                       />
@@ -462,13 +466,15 @@ export default function AllExperiencePage() {
                           </div>
                         )}
 
-                        {item.screenshot && (
+                        {isOpen && item.screenshot && (
                           <div className="relative mb-4 overflow-hidden bg-black">
                             <Image
                               src={item.screenshot}
                               alt={`${item.title} analytics screenshot`}
                               width={1400}
                               height={1050}
+                              sizes="(min-width: 768px) 40vw, calc(100vw - 3rem)"
+                              quality={70}
                               className="h-auto w-full object-cover"
                             />
                           </div>

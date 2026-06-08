@@ -160,8 +160,9 @@ export default function ResumePage() {
             src="/Ashutosh-Singh-Resume.png"
             alt="Ashutosh Singh resume"
             fill
-            priority
+            preload
             sizes="(min-width: 768px) 40vw, 100vw"
+            quality={75}
             className="object-contain"
           />
         </div>

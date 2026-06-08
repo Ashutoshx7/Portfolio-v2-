@@ -131,6 +131,10 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                           <img
                             src={profile.avatar}
                             alt={profile.name}
+                            width={48}
+                            height={48}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover grayscale opacity-90 contrast-100 mix-blend-multiply dark:mix-blend-normal"
                           />
                         </div>
@@ -223,6 +227,10 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                           <img
                             src={profile.banner}
                             alt="Banner"
+                            width={250}
+                            height={64}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover opacity-95 scale-[1.15] origin-right"
                           />
                         )}
@@ -245,6 +253,10 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                           <img
                             src={profile.avatar}
                             alt={profile.name}
+                            width={56}
+                            height={56}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover grayscale opacity-90 contrast-100 mix-blend-multiply dark:mix-blend-normal"
                           />
                         </div>

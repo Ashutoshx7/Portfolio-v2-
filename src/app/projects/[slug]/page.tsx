@@ -3,7 +3,7 @@ import { CommandMenu } from "@/components/command-menu";
 import { CurrentTime } from "@/components/CurrentTime";
 import { RightNavbar } from "@/components/RightNavbar";
 import { FooterBackground } from "@/components/FooterBackground";
-import { projectsData, iconMap, techNames, Project, TechItem, TechKey } from "@/data/projectsData";
+import { projectsData, iconMap, techNames, TechItem, TechKey } from "@/data/projectsData";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -119,8 +119,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               src={project.src} 
               alt={project.imageTitle} 
               fill 
+              preload
+              sizes="(min-width: 768px) 40vw, 100vw"
+              quality={75}
               className="object-cover"
-              priority
             />
           )}
         </div>

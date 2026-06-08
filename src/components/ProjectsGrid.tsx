@@ -1,39 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { ComponentType } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, Star, X, Network, Search } from "lucide-react";
-import {
-  SiNextdotjs,
-  SiTypescript,
-  SiReact,
-  SiThreedotjs,
-  SiPrisma,
-  SiCloudflare,
-  SiLangchain,
-  SiNodedotjs,
-  SiFramer,
-  SiTailwindcss,
-  SiBun,
-  SiEslint,
-  SiRadixui,
-  SiChartdotjs,
-  SiGithub,
-  SiFastapi,
-  SiRedis,
-  SiCelery,
-  SiTldraw,
-  SiCss,
-  SiPython,
-  SiAnthropic,
-  SiClaude,
-  SiGooglegemini,
-  SiMeta,
-} from "react-icons/si";
+import { X } from "lucide-react";
 
 import {
   type TechIcon,
@@ -57,12 +29,11 @@ export {
 
 export const ProjectCard = ({ project, setActiveVideo }: { project: Project; setActiveVideo: (v: string) => void }) => {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [shouldLoadHoverImage, setShouldLoadHoverImage] = useState(false);
+  const { resolvedTheme } = useTheme();
   const router = useRouter();
 
-  useEffect(() => { setMounted(true); }, []);
-  const imageSrc = mounted && theme === "light" && project.lightModeSrc ? project.lightModeSrc : project.src;
+  const imageSrc = resolvedTheme === "light" && project.lightModeSrc ? project.lightModeSrc : project.src;
 
   const isNotStarted = project.title === "Inquiro";
   const isBuilding = project.title === "Blueprint" || project.title === "Scribble3D";
@@ -70,7 +41,12 @@ export const ProjectCard = ({ project, setActiveVideo }: { project: Project; set
   const statusLabel = isNotStarted ? "Not Started" : isBuilding ? "Building" : "Live";
 
   return (
-    <div className="flex flex-col group cursor-pointer" onClick={() => router.push(`/projects/${project.slug}`)}>
+    <div
+      className="flex flex-col group cursor-pointer"
+      onClick={() => router.push(`/projects/${project.slug}`)}
+      onMouseEnter={() => setShouldLoadHoverImage(true)}
+      onFocus={() => setShouldLoadHoverImage(true)}
+    >
       {/* Outer Wrapper exactly like screenshot */}
       <motion.div
         className="relative w-full aspect-[1.4] rounded-xl border border-black/5 dark:border-white/5 bg-zinc-50/80 dark:bg-[#09090b]/80 shadow-sm p-4 pb-0 flex flex-col overflow-hidden transition-all duration-300 hover:shadow-md hover:border-black/10 dark:hover:border-white/10"
@@ -92,7 +68,10 @@ export const ProjectCard = ({ project, setActiveVideo }: { project: Project; set
         <motion.div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('${project.backgroundImage || "/image.png"}')`,
+            backgroundImage: shouldLoadHoverImage
+              && project.backgroundImage
+              ? `url('${project.backgroundImage}')`
+              : undefined,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -144,7 +123,15 @@ export const ProjectCard = ({ project, setActiveVideo }: { project: Project; set
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
         >
           <div className="size-full overflow-hidden rounded-t-[9px]">
-            <Image src={imageSrc} alt={`${project.title} preview`} width={600} height={400} className="size-full object-cover" />
+            <Image
+              src={imageSrc}
+              alt={`${project.title} preview`}
+              width={600}
+              height={400}
+              sizes="(min-width: 768px) 17vw, calc(100vw - 4rem)"
+              quality={70}
+              className="size-full object-cover"
+            />
           </div>
         </motion.div>
       </motion.div>
@@ -237,7 +224,7 @@ export function ProjectsGrid() {
       <div className="flex flex-col relative z-10 w-full">
         {/* Row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-0 pb-10 md:pb-6">
-          {projectsData.slice(0, 2).map((project, idx) => (
+          {projectsData.slice(0, 2).map((project) => (
             <ProjectCard key={project.title} project={project} setActiveVideo={setActiveVideo} />
           ))}
         </div>
@@ -253,7 +240,7 @@ export function ProjectsGrid() {
 
         {/* Row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-0 pt-0 md:pt-6">
-          {projectsData.slice(2, 4).map((project, idx) => (
+          {projectsData.slice(2, 4).map((project) => (
             <ProjectCard key={project.title} project={project} setActiveVideo={setActiveVideo} />
           ))}
         </div>

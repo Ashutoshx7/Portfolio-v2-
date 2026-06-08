@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Full stack developer building clean, modern websites and apps with a focus on design, functionality, and attention to detail.",
   icons: {
-    icon: "https://github.com/ashutoshx7.png",
+    icon: "/Avatar.jpeg",
   },
   openGraph: {
     title: "Ashutoshx7",

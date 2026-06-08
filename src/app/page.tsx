@@ -13,6 +13,7 @@ import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
 import SocialHoverCard from "@/components/pixel-perfect/social-hover-card";
 import { BannerParticles } from "@/components/BannerParticles";
 import { FileText } from "lucide-react";
+import Image from "next/image";
 
 const skills = [
   { name: "React", icon: "react" },
@@ -78,15 +79,23 @@ export default function Home() {
 
       {/* Cell 1: Banner */}
       <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[22vh] -z-0 pointer-events-auto overflow-hidden bg-white dark:bg-black shadow-[0_4px_12px_rgba(2,6,23,0.04)] dark:shadow-[0_4px_12px_rgba(2,6,23,0.10)]">
-        <img
+        <Image
           src="/ChatGPT%20Image%20May%2022%2C%202026%2C%2012_40_29%20AM.png"
-          alt="Light mode banner"
-          className="w-full h-full object-cover object-center dark:hidden"
+          alt=""
+          fill
+          fetchPriority="high"
+          sizes="(min-width: 768px) 40vw, 100vw"
+          quality={70}
+          className="object-cover object-center dark:hidden"
         />
-        <img
+        <Image
           src="/ChatGPT%20Image%20May%2022%2C%202026%2C%2012_49_39%20AM.png"
-          alt="Dark mode banner"
-          className="hidden w-full h-full object-cover object-center dark:block"
+          alt=""
+          fill
+          fetchPriority="high"
+          sizes="(min-width: 768px) 40vw, 100vw"
+          quality={70}
+          className="hidden object-cover object-center dark:block"
         />
         <BannerParticles />
         <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none z-[5] bg-gradient-to-t from-white/90 to-transparent dark:from-black/50 dark:to-transparent" />
@@ -105,7 +114,16 @@ export default function Home() {
             <div className="relative p-[3px] rounded-[6px] sm:rounded-[8px] border-[1.5px] border-black/30 dark:border-white/[0.15] shrink-0">
               {/* The inner image */}
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
-                <img src="https://github.com/ashutoshx7.png" alt="Profile" className="w-full h-full object-cover scale-[1.48] translate-y-4 origin-center grayscale opacity-90 contrast-100 mix-blend-multiply dark:mix-blend-normal" />
+                <Image
+                  src="https://github.com/ashutoshx7.png"
+                  alt="Profile"
+                  width={240}
+                  height={240}
+                  quality={90}
+                  fetchPriority="high"
+                  sizes="(min-width: 640px) 120px, 96px"
+                  className="h-full w-full origin-center translate-y-4 scale-[1.48] object-cover opacity-90 grayscale contrast-100 mix-blend-multiply dark:mix-blend-normal"
+                />
               </div>
             </div>
 
@@ -347,7 +365,15 @@ export default function Home() {
             <div className="flex flex-wrap gap-2 w-full">
               {skills.map((skill, index) => (
                 <div key={index} className="grow flex items-center justify-center gap-2 px-3 py-1.5 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#0a0a0a] dark:hover:bg-[#121214] border border-black/30 dark:border-white/[0.15] rounded-[6px] transition-colors duration-200 cursor-default">
-                  <img src={skill.icon.startsWith('http') ? skill.icon : `https://cdn.simpleicons.org/${skill.icon}/71717a`} alt={skill.name} className={`w-3.5 h-3.5 opacity-80 ${skill.icon.startsWith('http') ? 'rounded-sm grayscale' : ''}`} />
+                  <img
+                    src={skill.icon.startsWith('http') ? skill.icon : `https://cdn.simpleicons.org/${skill.icon}/71717a`}
+                    alt={skill.name}
+                    width={14}
+                    height={14}
+                    loading="lazy"
+                    decoding="async"
+                    className={`h-3.5 w-3.5 opacity-80 ${skill.icon.startsWith('http') ? 'rounded-sm grayscale' : ''}`}
+                  />
                   <span className="text-[13px] font-medium text-zinc-600 dark:text-zinc-400">{skill.name}</span>
                 </div>
               ))}
