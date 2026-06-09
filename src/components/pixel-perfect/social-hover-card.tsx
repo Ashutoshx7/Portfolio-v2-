@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+
+const darkBannerImage = "/ChatGPT%20Image%20May%2022%2C%202026%2C%2012_49_39%20AM.jpg";
 
 interface SocialProfile {
   name: string;
@@ -34,7 +37,7 @@ const socialProfiles: Record<string, SocialProfile> = {
     name: "Ashutoshx7",
     handle: "@Ashutosh_7x7",
     avatar: "https://unavatar.io/twitter/Ashutosh_7x7",
-    banner: "/banner.png",
+    banner: darkBannerImage,
     bio: "Artist / Engineer 20 • Backed by Vercel • Building Draco",
     location: "Delhi, India (UTC +05:30)",
     stats: [
@@ -46,7 +49,7 @@ const socialProfiles: Record<string, SocialProfile> = {
     name: "Ashutosh Singh",
     handle: "in/ashutosh-singh-855177329",
     avatar: "https://github.com/ashutoshx7.png",
-    banner: "/banner.png",
+    banner: darkBannerImage,
     bio: "20 • Artist / Engineer ||",
     location: "Lucknow, Uttar Pradesh, India",
     stats: [
@@ -128,13 +131,15 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                       {/* Circular Avatar Container with status dot */}
                       <div className="relative shrink-0">
                         <div className="w-12 h-12 rounded-full overflow-hidden border border-black/5 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900">
-                          <img
+                          <Image
                             src={profile.avatar}
                             alt={profile.name}
                             width={48}
                             height={48}
-                            loading="lazy"
+                            loading="eager"
                             decoding="async"
+                            quality={75}
+                            sizes="48px"
                             className="w-full h-full object-cover grayscale opacity-90 contrast-100 mix-blend-multiply dark:mix-blend-normal"
                           />
                         </div>
@@ -224,13 +229,15 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                         {profile.banner.startsWith("bg-") ? (
                           <div className={cn("w-full h-full", profile.banner)} />
                         ) : (
-                          <img
+                          <Image
                             src={profile.banner}
                             alt="Banner"
                             width={250}
                             height={64}
-                            loading="lazy"
+                            loading="eager"
                             decoding="async"
+                            quality={75}
+                            sizes="250px"
                             className="w-full h-full object-cover opacity-95 scale-[1.15] origin-right"
                           />
                         )}
@@ -250,13 +257,15 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                             ? "w-14 h-14 border-white dark:border-[#0c0c0e]"
                             : "w-12 h-12 border-black/5 dark:border-white/10 -top-4"
                         )}>
-                          <img
+                          <Image
                             src={profile.avatar}
                             alt={profile.name}
                             width={56}
                             height={56}
-                            loading="lazy"
+                            loading="eager"
                             decoding="async"
+                            quality={75}
+                            sizes="56px"
                             className="w-full h-full object-cover grayscale opacity-90 contrast-100 mix-blend-multiply dark:mix-blend-normal"
                           />
                         </div>

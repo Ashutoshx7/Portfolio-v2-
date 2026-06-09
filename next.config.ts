@@ -21,6 +21,13 @@ const nextConfig: NextConfig = {
         pathname: "/ashutoshx7.png",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "unavatar.io",
+        port: "",
+        pathname: "/twitter/**",
+        search: "",
+      },
     ],
   },
 };
