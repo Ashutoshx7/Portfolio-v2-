@@ -126,16 +126,16 @@ export function GithubGraph() {
   const contributionLevels = useMemo<ContributionLevel[]>(
     () => [
       {
-        cell: "bg-zinc-100 dark:bg-[#050505]",
+        cell: "bg-zinc-100 dark:bg-zinc-800",
       },
       {
-        cell: "bg-zinc-300 dark:bg-zinc-900",
+        cell: "bg-zinc-300 dark:bg-zinc-600",
       },
       {
-        cell: "bg-zinc-500 dark:bg-zinc-800",
+        cell: "bg-zinc-500 dark:bg-zinc-500",
       },
       {
-        cell: "bg-zinc-700 dark:bg-zinc-500",
+        cell: "bg-zinc-700 dark:bg-zinc-300",
       },
       {
         cell: "bg-zinc-950 dark:bg-zinc-100",
@@ -211,7 +211,7 @@ export function GithubGraph() {
           <h2 id="github-activity-title" className="text-[12px] font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
             GitHub Activity
           </h2>
-          <p className="text-right text-[11px] text-zinc-500" aria-live="polite">
+          <p className="text-right text-[11px] text-zinc-500 dark:text-zinc-400" aria-live="polite">
             {graphStatus}
           </p>
         </div>
@@ -222,7 +222,7 @@ export function GithubGraph() {
 
         <div className="overflow-x-auto overflow-y-visible [scrollbar-width:thin] [scrollbar-color:rgb(82_82_91)_transparent]">
           <div className="min-w-[686px] rounded-[6px] border border-black/5 bg-zinc-50/40 p-2 dark:border-white/5 dark:bg-white/[0.015]">
-            <div className="mb-2 flex w-full justify-between pr-[12px] pl-[1px] text-[10px] text-zinc-400 dark:text-zinc-600">
+            <div className="mb-2 flex w-full justify-between pr-[12px] pl-[1px] text-[10px] text-zinc-400 dark:text-zinc-500">
               {displayMonths.map((month, index) => (
                 <span key={`${month}-${index}`}>{month}</span>
               ))}
@@ -275,7 +275,7 @@ export function GithubGraph() {
         </div>
 
         <div className="mt-3 flex items-center justify-between gap-3">
-          <span className="text-[11px] text-zinc-500">Less active</span>
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-400">Less active</span>
           <div className="flex shrink-0 items-center gap-1.5">
             {contributionLevels.map((level, index) => (
               <div
@@ -284,7 +284,7 @@ export function GithubGraph() {
                 className={`size-2 rounded-[2px] opacity-80 dark:opacity-70 ${level.cell}`}
               />
             ))}
-            <span className="text-[11px] text-zinc-500">More active</span>
+            <span className="text-[11px] text-zinc-500 dark:text-zinc-400">More active</span>
           </div>
         </div>
 
