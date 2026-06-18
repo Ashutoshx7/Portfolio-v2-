@@ -17,7 +17,6 @@ interface ContributionMonth {
 
 interface ContributionLevel {
   cell: string;
-  text: string;
 }
 
 interface TooltipState {
@@ -127,24 +126,19 @@ export function GithubGraph() {
   const contributionLevels = useMemo<ContributionLevel[]>(
     () => [
       {
-        cell: "bg-zinc-100 dark:bg-zinc-950",
-        text: "text-zinc-500 dark:text-zinc-500",
+        cell: "bg-zinc-100 dark:bg-[#050505]",
       },
       {
-        cell: "bg-zinc-300 dark:bg-zinc-800",
-        text: "text-zinc-700 dark:text-zinc-300",
+        cell: "bg-zinc-300 dark:bg-zinc-900",
       },
       {
-        cell: "bg-zinc-500 dark:bg-zinc-600",
-        text: "text-white dark:text-white",
+        cell: "bg-zinc-500 dark:bg-zinc-800",
       },
       {
-        cell: "bg-zinc-700 dark:bg-zinc-300",
-        text: "text-white dark:text-zinc-950",
+        cell: "bg-zinc-700 dark:bg-zinc-500",
       },
       {
-        cell: "bg-zinc-950 dark:bg-white",
-        text: "text-white dark:text-zinc-950",
+        cell: "bg-zinc-950 dark:bg-zinc-100",
       },
     ],
     []
@@ -188,39 +182,60 @@ export function GithubGraph() {
     loading && totalContributions === 0
       ? "Loading GitHub contribution activity"
       : `${totalContributions} GitHub activities in the last year`;
+  const dashedLineMask = {
+    maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
+    WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
+  };
 
   return (
-    <section className="mt-6 flex w-full justify-center" aria-labelledby="github-activity-title">
-      <div className="relative w-full rounded-[8px] border border-dashed border-black/30 bg-white/75 p-2 shadow-[0_8px_28px_rgba(2,6,23,0.04)] dark:border-white/[0.15] dark:bg-black/35 dark:shadow-none">
-        <div className="mb-2 flex items-center justify-between gap-3 px-1">
+    <section
+      className="relative mt-6 py-4"
+      aria-labelledby="github-activity-title"
+      aria-describedby="github-activity-summary"
+    >
+      <div
+        className="absolute top-0 left-[-100vw] right-[-100vw] h-0 border-t border-black/30 pointer-events-none dark:border-white/[0.15]"
+        style={dashedLineMask}
+      />
+      <div
+        className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
+        style={dashedLineMask}
+      />
+      <div className="absolute top-0 -left-4 z-20 size-[2px] -translate-x-1/2 -translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" />
+      <div className="absolute top-0 -right-4 z-20 size-[2px] translate-x-1/2 -translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" />
+      <div className="absolute bottom-0 -left-4 z-20 size-[2px] -translate-x-1/2 translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" />
+      <div className="absolute bottom-0 -right-4 z-20 size-[2px] translate-x-1/2 translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" />
+
+      <div className="relative w-full">
+        <div className="mb-3 flex items-center justify-between gap-3">
           <h2 id="github-activity-title" className="text-[12px] font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
             GitHub Activity
           </h2>
-          <p className="text-[11px] text-zinc-500" aria-live="polite">
+          <p className="text-right text-[11px] text-zinc-500" aria-live="polite">
             {graphStatus}
           </p>
         </div>
 
-        <p className="sr-only">
+        <p id="github-activity-summary" className="sr-only">
           Calendar heatmap showing daily GitHub contribution counts for Ashutoshx7 over the last year. Scroll horizontally to inspect all weeks.
         </p>
 
-        <div className="overflow-x-auto overflow-y-visible rounded-[5px] border border-black/5 bg-zinc-50/60 p-1 [scrollbar-width:thin] [scrollbar-color:rgb(82_82_91)_transparent] dark:border-white/5 dark:bg-zinc-950/50">
-          <div className="min-w-[742px]">
-            <div className="mb-2 flex w-full justify-between pr-[15px] pl-[1px] text-[10px] text-zinc-500 dark:text-zinc-500">
+        <div className="overflow-x-auto overflow-y-visible [scrollbar-width:thin] [scrollbar-color:rgb(82_82_91)_transparent]">
+          <div className="min-w-[686px] rounded-[6px] border border-black/5 bg-zinc-50/40 p-2 dark:border-white/5 dark:bg-white/[0.015]">
+            <div className="mb-2 flex w-full justify-between pr-[12px] pl-[1px] text-[10px] text-zinc-400 dark:text-zinc-600">
               {displayMonths.map((month, index) => (
                 <span key={`${month}-${index}`}>{month}</span>
               ))}
             </div>
 
-            <div className="grid grid-cols-[repeat(53,12px)] gap-x-[2px]" role="list" aria-label={graphStatus}>
+            <div className="grid grid-cols-[repeat(53,10px)] gap-x-[2px]" role="img" aria-label={graphStatus}>
               {loading && weeks.length === 0
                 ? Array.from({ length: 53 }).map((_, colIndex) => (
                     <div key={colIndex} className="flex flex-col gap-[2px]">
                       {Array.from({ length: 7 }).map((__, rowIndex) => (
                         <div
                           key={rowIndex}
-                          className="size-3 animate-pulse rounded-[2px] bg-zinc-100 dark:bg-zinc-950"
+                          className="size-2.5 animate-pulse rounded-[2px] bg-zinc-100 dark:bg-[#050505]"
                         />
                       ))}
                     </div>
@@ -229,7 +244,7 @@ export function GithubGraph() {
                     <div key={colIndex} className="flex flex-col gap-[2px]">
                       {colIndex === 0 &&
                         Array.from({ length: 7 - week.contributionDays.length }).map((_, i) => (
-                          <div key={`empty-top-${i}`} className="size-3 rounded-[2px] bg-transparent" />
+                          <div key={`empty-top-${i}`} className="size-2.5 rounded-[2px] bg-transparent" />
                         ))}
 
                       {week.contributionDays.map((day) => {
@@ -239,21 +254,19 @@ export function GithubGraph() {
                         return (
                           <div
                             key={day.date}
-                            role="listitem"
+                            aria-hidden="true"
                             aria-label={`${day.contributionCount} contributions on ${formatDate(day.date)}`}
-                            className={`grid size-3 place-items-center rounded-[2px] text-[7px] font-semibold leading-none outline-none ring-offset-1 ring-offset-white transition-transform hover:scale-125 focus-visible:scale-125 focus-visible:ring-1 focus-visible:ring-zinc-500 dark:ring-offset-black ${color.cell} ${color.text}`}
+                            className={`size-2.5 rounded-[2px] opacity-80 outline-none transition-[opacity,transform] hover:scale-125 hover:opacity-100 dark:opacity-70 dark:hover:opacity-100 ${color.cell}`}
                             onMouseEnter={(event) => showTooltip(day, event)}
                             onMouseLeave={() => setTooltip(null)}
-                          >
-                            {day.contributionCount > 0 ? day.contributionCount : null}
-                          </div>
+                          />
                         );
                       })}
 
                       {colIndex !== 0 &&
                         week.contributionDays.length < 7 &&
                         Array.from({ length: 7 - week.contributionDays.length }).map((_, i) => (
-                          <div key={`empty-bottom-${i}`} className="size-3 rounded-[2px] bg-transparent" />
+                          <div key={`empty-bottom-${i}`} className="size-2.5 rounded-[2px] bg-transparent" />
                         ))}
                     </div>
                   ))}
@@ -261,14 +274,14 @@ export function GithubGraph() {
           </div>
         </div>
 
-        <div className="mt-3 flex items-center justify-between gap-3 px-1">
+        <div className="mt-3 flex items-center justify-between gap-3">
           <span className="text-[11px] text-zinc-500">Less active</span>
           <div className="flex shrink-0 items-center gap-1.5">
             {contributionLevels.map((level, index) => (
               <div
                 key={index}
                 aria-hidden="true"
-                className={`size-2.5 rounded-[2px] ${level.cell}`}
+                className={`size-2 rounded-[2px] opacity-80 dark:opacity-70 ${level.cell}`}
               />
             ))}
             <span className="text-[11px] text-zinc-500">More active</span>
