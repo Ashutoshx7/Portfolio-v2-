@@ -227,22 +227,22 @@ export function GithubGraph() {
 
       {/* Graph content — sits directly on the page background */}
       <div className="relative py-4">
-        <div className="overflow-x-auto overflow-y-visible [scrollbar-width:thin] [scrollbar-color:rgb(82_82_91)_transparent]">
-          <div className="min-w-[686px]">
-            <div className="mb-2 flex w-full justify-between pr-[12px] pl-[1px] text-[10px] text-zinc-400 dark:text-zinc-500">
+        <div className="w-full overflow-x-auto [scrollbar-width:thin] [scrollbar-color:rgb(82_82_91)_transparent]">
+          <div className="min-w-[420px]">
+            <div className="mb-2 flex w-full justify-between text-[10px] text-zinc-400 dark:text-zinc-500">
               {displayMonths.map((month, index) => (
                 <span key={`${month}-${index}`}>{month}</span>
               ))}
             </div>
 
-            <div className="grid grid-cols-[repeat(53,10px)] gap-x-[2px]" role="img" aria-label={graphStatus}>
+            <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-x-[2px]" role="img" aria-label={graphStatus}>
               {loading && weeks.length === 0
                 ? Array.from({ length: 53 }).map((_, colIndex) => (
                     <div key={colIndex} className="flex flex-col gap-[2px]">
                       {Array.from({ length: 7 }).map((__, rowIndex) => (
                         <div
                           key={rowIndex}
-                          className="size-2.5 animate-pulse rounded-[2px] bg-zinc-100 dark:bg-zinc-800"
+                          className="aspect-square w-full animate-pulse rounded-[2px] bg-zinc-100 dark:bg-zinc-800"
                         />
                       ))}
                     </div>
@@ -251,7 +251,7 @@ export function GithubGraph() {
                     <div key={colIndex} className="flex flex-col gap-[2px]">
                       {colIndex === 0 &&
                         Array.from({ length: 7 - week.contributionDays.length }).map((_, i) => (
-                          <div key={`empty-top-${i}`} className="size-2.5 rounded-[2px] bg-transparent" />
+                          <div key={`empty-top-${i}`} className="aspect-square w-full rounded-[2px] bg-transparent" />
                         ))}
 
                       {week.contributionDays.map((day) => {
@@ -263,7 +263,7 @@ export function GithubGraph() {
                             key={day.date}
                             aria-hidden="true"
                             aria-label={`${day.contributionCount} contributions on ${formatDate(day.date)}`}
-                            className={`size-2.5 rounded-[2px] opacity-80 outline-none transition-[opacity,transform] hover:scale-125 hover:opacity-100 dark:opacity-70 dark:hover:opacity-100 ${color.cell}`}
+                            className={`aspect-square w-full rounded-[2px] opacity-80 outline-none transition-[opacity,transform] hover:scale-125 hover:opacity-100 dark:opacity-70 dark:hover:opacity-100 ${color.cell}`}
                             onMouseEnter={(event) => showTooltip(day, event)}
                             onMouseLeave={() => setTooltip(null)}
                           />
@@ -273,7 +273,7 @@ export function GithubGraph() {
                       {colIndex !== 0 &&
                         week.contributionDays.length < 7 &&
                         Array.from({ length: 7 - week.contributionDays.length }).map((_, i) => (
-                          <div key={`empty-bottom-${i}`} className="size-2.5 rounded-[2px] bg-transparent" />
+                          <div key={`empty-bottom-${i}`} className="aspect-square w-full rounded-[2px] bg-transparent" />
                         ))}
                     </div>
                   ))}
