@@ -227,8 +227,8 @@ export function GithubGraph() {
 
       {/* Graph content — sits directly on the page background */}
       <div className="relative py-4">
-        <div className="w-full overflow-x-auto [scrollbar-width:thin] [scrollbar-color:rgb(82_82_91)_transparent]">
-          <div className="min-w-[420px]">
+        <div className="w-full">
+          <div>
             <div className="mb-2 flex w-full justify-between text-[10px] text-zinc-400 dark:text-zinc-500">
               {displayMonths.map((month, index) => (
                 <span key={`${month}-${index}`}>{month}</span>
