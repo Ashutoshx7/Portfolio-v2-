@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ashutoshx7 — Portfolio
+
+A minimal, fast, and interactive developer portfolio built with **Next.js 16**, **React 19**, **Tailwind CSS v4**, and **TypeScript**.
+
+It showcases my work, experience, open-source contributions, skills, and writing — with a dark/light theme, smooth motion, and a command palette for quick navigation.
+
+---
+
+## Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) 16 (App Router)
+- **Library:** [React](https://react.dev/) 19
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) v4
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Animation:** [Framer Motion](https://www.framer.com/motion/), [GSAP](https://greensock.com/gsap/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/)
+- **Icons:** [Lucide React](https://lucide.dev/), [React Icons](https://react-icons.github.io/react-icons/)
+- **Deployment:** [Vercel](https://vercel.com/) with Analytics & Speed Insights
+
+---
+
+## Features
+
+- Responsive, grid-based layout with blueprint-style micro-details
+- Dark and light mode with system preference detection
+- Command palette (`Cmd/Ctrl + K`) for quick navigation
+- Interactive GitHub contribution graph
+- Project showcase with detail pages
+- Experience timeline
+- Open-source contributions section
+- Skills and technologies grid
+- Blog listing
+- Contact and resume pages
+- Sound-engineered micro-interactions
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) 20 or later
+- npm / yarn / pnpm / bun
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### Start the production server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Lint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+Portfolio-v2-
+├── src/
+│   ├── app/                 # Next.js App Router pages
+│   ├── components/          # React components & UI primitives
+│   ├── data/                # Projects and blogs data
+│   ├── hooks/               # Custom React hooks
+│   └── lib/                 # Utility functions and sound engine
+├── public/                  # Static assets
+├── next.config.ts           # Next.js configuration
+├── tailwind.config.ts       # Tailwind CSS configuration
+├── tsconfig.json            # TypeScript configuration
+└── package.json
+```
+
+---
+
+## Deployment
+
+This site is optimized for deployment on [Vercel](https://vercel.com/). Connect your GitHub repository to Vercel and deploy with zero configuration.
+
+For other platforms, use the static or Node.js output mode configured in `next.config.ts`.
+
+---
+
+## Connect
+
+- **GitHub:** [Ashutoshx7](https://github.com/Ashutoshx7)
+- **Twitter / X:** [@Ashutosh_7x7](https://x.com/Ashutosh_7x7)
+- **LinkedIn:** [Ashutosh Singh](https://www.linkedin.com/in/ashutosh-singh-855177329/)
+
+---
+
+Built with purpose, precision, and a little bit of chaos.
