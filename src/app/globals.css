@@ -179,4 +179,16 @@ body {
     }
   }
 
+  @keyframes highlights-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .highlights-track {
+    animation: highlights-marquee 28s linear infinite;
+  }
+  .highlights-track:hover {
+    animation-play-state: paused;
+  }
+
 }
