@@ -1,3 +1,5 @@
+
+
 # Ashutoshx7 — Portfolio
 
 A minimal, fast, and interactive developer portfolio built with **Next.js 16**, **React 19**, **Tailwind CSS v4**, and **TypeScript**.
@@ -88,7 +90,6 @@ Portfolio-v2-
 │   └── lib/                 # Utility functions and sound engine
 ├── public/                  # Static assets
 ├── next.config.ts           # Next.js configuration
-├── tailwind.config.ts       # Tailwind CSS configuration
 ├── tsconfig.json            # TypeScript configuration
 └── package.json
 ```
