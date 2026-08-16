@@ -63,6 +63,20 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       type: "article",
+      images: [
+        {
+          url: "/og-image.jpg",
+          width: 1024,
+          height: 576,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: ["/og-image.jpg"],
     },
   };
 }

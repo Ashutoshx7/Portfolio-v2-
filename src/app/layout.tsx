@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ashutoshx7.vercel.app"
+  ),
   title: "Ashutoshx7",
   description:
     "Full stack developer building clean, modern websites and apps with a focus on design, functionality, and attention to detail.",
@@ -31,6 +34,21 @@ export const metadata: Metadata = {
     description:
       "Full stack developer building clean, modern websites and apps.",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1024,
+        height: 576,
+        alt: "Ashutoshx7 Portfolio OG Image",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ashutoshx7",
+    description:
+      "Full stack developer building clean, modern websites and apps.",
+    images: ["/og-image.jpg"],
   },
 };
 
