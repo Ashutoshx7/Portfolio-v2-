@@ -33,13 +33,17 @@ export const metadata: Metadata = {
     title: "Ashutoshx7",
     description:
       "Full stack developer building clean, modern websites and apps.",
+    url: "https://ashutoshx7.me",
+    siteName: "Ashutoshx7",
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://ashutoshx7.me/og-image.jpg",
+        secureUrl: "https://ashutoshx7.me/og-image.jpg",
         width: 1024,
         height: 576,
-        alt: "Ashutoshx7 Portfolio OG Image",
+        type: "image/jpeg",
+        alt: "Ashutoshx7 - Engineer / Artist Portfolio",
       },
     ],
   },
@@ -48,7 +52,9 @@ export const metadata: Metadata = {
     title: "Ashutoshx7",
     description:
       "Full stack developer building clean, modern websites and apps.",
-    images: ["/og-image.jpg"],
+    site: "@Ashutosh_7x7",
+    creator: "@Ashutosh_7x7",
+    images: ["https://ashutoshx7.me/og-image.jpg"],
   },
 };
 
