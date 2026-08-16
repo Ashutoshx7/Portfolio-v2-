@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://ashutoshx7.vercel.app"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ashutoshx7.me"
   ),
   title: "Ashutoshx7",
   description:
