@@ -32,7 +32,7 @@ It showcases my work, experience, open-source contributions, skills, and writing
 - Open-source contributions section
 - Skills and technologies grid
 - Blog listing
-- Contact and resume pages
+- Contact page
 - Sound-engineered micro-interactions
 
 ---
