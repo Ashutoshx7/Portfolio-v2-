@@ -188,7 +188,7 @@ const experiences: ExperienceData[] = [
   {
     title: "Open Source Contributor",
     role: "Full Stack Developer",
-    dates: "December 2024 - April 2024",
+    dates: "December 2024 - April 2025",
     location: "Remote",
     src: "/Experience-image/pngegg (1).png",
     imageFit: "contain",
