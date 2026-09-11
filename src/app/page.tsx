@@ -47,6 +47,11 @@ const skills = [
   { name: "Linux", icon: "linux" },
 ];
 
+const lightBannerPlaceholder =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 11'%3E%3Crect width='32' height='11' fill='%23d9e5e7'/%3E%3C/svg%3E";
+const darkBannerPlaceholder =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 11'%3E%3Crect width='32' height='11' fill='%23071329'/%3E%3C/svg%3E";
+
 export default function Home() {
   return (
     <div className="min-h-screen w-full bg-white dark:bg-black relative overflow-x-hidden transition-colors duration-300">
@@ -86,7 +91,9 @@ export default function Home() {
           fill
           fetchPriority="high"
           sizes="(min-width: 768px) 40vw, 100vw"
-          quality={100}
+          quality={70}
+          placeholder="blur"
+          blurDataURL={lightBannerPlaceholder}
           className="object-cover object-center dark:hidden"
         />
         <Image
@@ -95,7 +102,9 @@ export default function Home() {
           fill
           fetchPriority="high"
           sizes="(min-width: 768px) 40vw, 100vw"
-          quality={100}
+          quality={70}
+          placeholder="blur"
+          blurDataURL={darkBannerPlaceholder}
           className="hidden object-cover object-center dark:block"
         />
         <BannerParticles />

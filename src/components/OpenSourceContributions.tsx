@@ -24,6 +24,10 @@ type GitHubSearchResponse = {
   data?: {
     search?: {
       edges?: Array<SearchEdge | null>;
+      pageInfo?: {
+        hasNextPage: boolean;
+        endCursor: string | null;
+      };
     };
   };
   message?: string;
@@ -32,15 +36,20 @@ type GitHubSearchResponse = {
 
 type FilterType = "merged" | "open" | "closed";
 
+const MAX_PRS_PER_FILTER = 300;
+const PR_CACHE_VERSION = "v2_300";
+
 const SEARCH_QUERIES: Record<FilterType, string> = {
   merged: "author:Ashutoshx7 type:pr is:merged",
   open: "author:Ashutoshx7 type:pr is:open",
   closed: "author:Ashutoshx7 type:pr is:closed is:unmerged",
 };
 
-function buildGraphQLQuery(searchQuery: string) {
+function buildGraphQLQuery(searchQuery: string, after: string | null) {
+  const afterArgument = after ? `, after: ${JSON.stringify(after)}` : "";
+
   return `query {
-    search(query: "${searchQuery}", type: ISSUE, first: 100) {
+    search(query: "${searchQuery}", type: ISSUE, first: 100${afterArgument}) {
       edges {
         node {
           ... on PullRequest {
@@ -56,6 +65,10 @@ function buildGraphQLQuery(searchQuery: string) {
             closedAt
           }
         }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
       }
     }
   }`;
@@ -76,7 +89,7 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
   const fetchedRef = useRef(false);
 
   const fetchPRsForType = useCallback(async (type: FilterType) => {
-    const cacheKey = `github_prs_${type}`;
+    const cacheKey = `github_prs_${PR_CACHE_VERSION}_${type}`;
     const cachedData = typeof window !== 'undefined' ? localStorage.getItem(cacheKey) : null;
 
     // Immediately populate from cache if available
@@ -92,16 +105,37 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
 
     // Fetch fresh data in background
     try {
-      const query = buildGraphQLQuery(SEARCH_QUERIES[type]);
-      const response = await fetch("/api/github", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-      });
+      const fetchedEdges: Array<SearchEdge | null> = [];
+      let after: string | null = null;
+      let hasNextPage = true;
 
-      const data = (await response.json()) as GitHubSearchResponse;
-      if (data.data?.search?.edges) {
-        const fetchedPRs = data.data.search.edges
+      while (hasNextPage && fetchedEdges.length < MAX_PRS_PER_FILTER) {
+        const query = buildGraphQLQuery(SEARCH_QUERIES[type], after);
+        const response = await fetch("/api/github", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query }),
+        });
+
+        const data = (await response.json()) as GitHubSearchResponse;
+        const search = data.data?.search;
+
+        if (!search?.edges) {
+          if (data.message === "Bad credentials" || data.error) {
+            console.warn("GitHub API: Invalid or missing GITHUB_TOKEN credentials. Fallback to cached/offline timeline state.");
+          } else {
+            console.error("GraphQL response missing expected data structure", data);
+          }
+          break;
+        }
+
+        fetchedEdges.push(...search.edges.slice(0, MAX_PRS_PER_FILTER - fetchedEdges.length));
+        after = search.pageInfo?.endCursor ?? null;
+        hasNextPage = Boolean(search.pageInfo?.hasNextPage && after);
+      }
+
+      if (fetchedEdges.length > 0) {
+        const fetchedPRs = fetchedEdges
           .flatMap((edge) => (edge?.node ? [edge.node] : []))
           .filter((pr: PR) => !(pr.title === "Main" && pr.repository.nameWithOwner === "Ashutoshx7/flexprice-storybook"));
         fetchedPRs.sort((a: PR, b: PR) => {
@@ -115,12 +149,6 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
           localStorage.setItem(cacheKey, JSON.stringify(fetchedPRs));
         }
       } else {
-        if (data.message === "Bad credentials" || data.error) {
-          console.warn("GitHub API: Invalid or missing GITHUB_TOKEN credentials. Fallback to cached/offline timeline state.");
-        } else {
-          console.error("GraphQL response missing expected data structure", data);
-        }
-        // Even on error, mark as loaded so we don't show spinner forever
         setLoadedTypes(prev => new Set(prev).add(type));
       }
     } catch (error) {
