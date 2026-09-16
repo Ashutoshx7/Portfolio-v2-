@@ -14,7 +14,7 @@ const settings = {
   rotationSpeed: 0,
   tumbleStrength: 0.3,
   staticTilt: 0,
-  particleCount: 40,
+  particleCount: 30,
   direction: 1 // 1 = left to right
 };
 
@@ -105,6 +105,10 @@ export function BannerParticles() {
     let height = 0;
     let animationFrameId: number;
     let isUnmounted = false;
+    let isInViewport = true;
+    let isPageVisible = !document.hidden;
+    let isRunning = false;
+    let lastFrameTime = 0;
 
     updateCache();
     const particleImage = createDefaultImage();
@@ -232,33 +236,73 @@ export function BannerParticles() {
       }
     };
 
-    const animate = () => {
-      if (isUnmounted) return;
+    const drawFrame = () => {
       ctx.clearRect(0, 0, width, height);
 
       for (const particle of particles) {
         particle.update();
         particle.draw();
       }
+    };
 
+    const animate = (timestamp: number) => {
+      if (isUnmounted || !isRunning) return;
+
+      animationFrameId = requestAnimationFrame(animate);
+      if (timestamp - lastFrameTime < 1000 / 30) return;
+
+      lastFrameTime = timestamp;
+      drawFrame();
+    };
+
+    const stopAnimation = () => {
+      isRunning = false;
+      cancelAnimationFrame(animationFrameId);
+    };
+
+    const startAnimation = () => {
+      if (isUnmounted || isRunning || !isInViewport || !isPageVisible || prefersReducedMotion) return;
+
+      isRunning = true;
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    setTimeout(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const initialFrameId = requestAnimationFrame(() => {
       if (isUnmounted) return;
       resize();
       initParticles();
-      animate();
-    }, 0);
+
+      if (prefersReducedMotion) {
+        drawFrame();
+      } else {
+        startAnimation();
+      }
+    });
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isInViewport = entry.isIntersecting;
+      if (isInViewport) startAnimation();
+      else stopAnimation();
+    });
+    observer.observe(canvas);
+
+    const handleVisibilityChange = () => {
+      isPageVisible = !document.hidden;
+      if (isPageVisible) startAnimation();
+      else stopAnimation();
+    };
 
     window.addEventListener("resize", resize);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       isUnmounted = true;
+      observer.disconnect();
       window.removeEventListener("resize", resize);
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      cancelAnimationFrame(initialFrameId);
+      stopAnimation();
     };
   }, []);
 

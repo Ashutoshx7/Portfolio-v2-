@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { highlightsData, type Highlight } from "@/data/highlightsData";
 
 function HighlightCard({ item }: { item: Highlight }) {
@@ -17,25 +18,15 @@ function HighlightCard({ item }: { item: Highlight }) {
         {/* Screenshot Image Container */}
         <div className="relative h-[200px] w-full bg-zinc-100 dark:bg-[#0a0a0a] overflow-hidden">
           {item.image ? (
-            <>
-              {item.imageFit === "contain" && (
-                <img
-                  src={item.image}
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 size-full scale-110 object-cover opacity-20 blur-xl grayscale transition-all duration-500 group-hover:opacity-30 group-hover:grayscale-0"
-                  loading="lazy"
-                  draggable={false}
-                />
-              )}
-              <img
-                src={item.image}
-                alt={item.title}
-                className={`relative z-[1] w-full h-full ${item.imageFit === "contain" ? "object-contain" : "object-cover object-top"} grayscale group-hover:grayscale-0 transition-all duration-500 scale-[1.01] group-hover:scale-[1.03]`}
-                loading="lazy"
-                draggable={false}
-              />
-            </>
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              sizes={`${item.cardWidth ?? 300}px`}
+              quality={70}
+              className={`${item.imageFit === "contain" ? "object-contain" : "object-cover object-top"} grayscale transition-[filter,transform] duration-300 group-hover:scale-[1.02] group-hover:grayscale-0`}
+              draggable={false}
+            />
           ) : (
             <div
               className="absolute inset-0 opacity-[0.05] dark:opacity-[0.04]"

@@ -83,7 +83,7 @@ export const projectsData: Project[] = [
     github: "https://github.com/Ashutoshx7/VengeanceUI",
     live: "https://www.vengenceui.com/",
     starsText: "500+",
-    backgroundImage: "/image copy 5.png",
+    backgroundImage: "/project-hover-vengenceui.webp",
     hasPin: true,
   },
   {
@@ -97,7 +97,7 @@ export const projectsData: Project[] = [
     tech: ["next", "tldraw", "three", "ts", "fastapi", "gemini"],
     github: "https://github.com/Ashutoshx7/Scribble3D-Sketch-to-3rd-",
     live: "",
-    backgroundImage: "/image copy.png",
+    backgroundImage: "/project-hover-scribble3d.webp",
     hasPin: false,
   },
   {
@@ -111,7 +111,7 @@ export const projectsData: Project[] = [
     tech: ["next", "ts", "tailwind", "prisma", "bun", "node", "langchain", "rag"],
     github: "https://github.com/Ashutoshx7/Blueprint",
     live: "",
-    backgroundImage: "/image copy 3.png",
+    backgroundImage: "/project-hover-blueprint.webp",
     hasPin: false,
   },
   {
@@ -125,7 +125,7 @@ export const projectsData: Project[] = [
     tech: ["next", "ts", "radixui", "node", "gemini", "langchain", "langgraph"],
     github: "https://github.com/Ashutoshx7/Inquiro-",
     live: "",
-    backgroundImage: "/image copy 4.png",
+    backgroundImage: "/project-hover-inquiro.webp",
     hasPin: false,
   },
 ];
