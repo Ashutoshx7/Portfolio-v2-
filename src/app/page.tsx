@@ -437,7 +437,7 @@ export default function Home() {
           <Highlights />
 
           {/* Bottom line */}
-          <div className="relative mt-4 pb-4">
+          <div className="relative mt-2 pb-1">
             <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
             <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
             <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
@@ -445,7 +445,7 @@ export default function Home() {
         </div>
 
         {/* Minimal Quote Section */}
-        <div className="mt-12 flex flex-col items-center justify-center relative py-12">
+        <div className="mt-2 flex flex-col items-center justify-center relative py-6">
           <div className="max-w-[480px] w-full flex flex-col items-center">
             <h3 className="text-[16px] font-medium text-center leading-relaxed text-zinc-500 dark:text-zinc-400 mb-6 italic">
               &quot;Do so much work that it would be unreasonable<br className="hidden md:block" /> for you to not be successful.&quot;
