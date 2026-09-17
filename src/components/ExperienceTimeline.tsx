@@ -209,13 +209,17 @@ export function ExperienceTimeline({ onSelect }: ExperienceTimelineProps) {
                   title={`${item.label} · ${item.dates}`}
                   aria-label={`View ${item.label}, ${item.dates}`}
                   onClick={() => onSelect(item.experienceIndex)}
-                  className={`group absolute top-1/2 z-10 flex h-8 -translate-y-1/2 cursor-pointer items-center overflow-hidden rounded-md border px-2 text-[10px] font-bold shadow-[0_3px_10px_rgba(0,0,0,0.18)] ring-1 ring-inset ring-white/15 transition-[background-color,border-color,color,transform] hover:-translate-y-[55%] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-zinc-600 dark:focus-visible:ring-offset-black ${
+                  className={`group absolute top-1/2 z-10 flex h-8 -translate-y-1/2 cursor-pointer items-center overflow-hidden rounded-md border px-2 text-[10px] font-bold shadow-[0_3px_10px_rgba(0,0,0,0.18)] ring-1 ring-inset ring-white/15
+                    transition-[background-color,border-color,color,transform,box-shadow] duration-300 ease-out motion-reduce:transition-none
+                    before:pointer-events-none before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/25 before:to-transparent motion-safe:before:transition-transform motion-safe:before:duration-500
+                    hover:z-30 hover:shadow-[0_9px_24px_rgba(0,0,0,0.3)] motion-safe:hover:-translate-y-[62%] motion-safe:hover:before:translate-x-full
+                    focus-visible:z-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white motion-safe:focus-visible:-translate-y-[62%] motion-safe:focus-visible:before:translate-x-full dark:focus-visible:ring-zinc-600 dark:focus-visible:ring-offset-black ${
                     item.align === "end" ? "justify-end" : "justify-start"
                   } ${item.barClassName}`}
                   style={{ left: `${item.start}%`, right: `${100 - item.end}%` }}
                 >
-                  <span className="flex min-w-max items-center gap-1.5">
-                    <span className="relative flex size-4 shrink-0 items-center justify-center overflow-hidden rounded-[4px] border border-black/10 bg-white dark:border-black/15">
+                  <span className="relative z-10 flex min-w-max items-center gap-1.5">
+                    <span className="relative flex size-4 shrink-0 items-center justify-center overflow-hidden rounded-[4px] border border-black/10 bg-white motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out motion-safe:group-hover:-rotate-6 motion-safe:group-hover:scale-110 motion-safe:group-focus-visible:-rotate-6 motion-safe:group-focus-visible:scale-110 dark:border-black/15">
                       <Image
                         src={item.icon}
                         alt=""
