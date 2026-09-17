@@ -56,7 +56,7 @@ const experiences: ExperienceData[] = [
   {
     title: "Google Summer of Code 2026",
     role: "AI Intern, Sugar Labs",
-    dates: "May 2026 - Present",
+    dates: "May 2026 - August 2026",
     location: "Remote",
     src: "/Experience-image/Google_Summer_of_Code_sun_logo_2022.svg (1).png",
     imageFit: "contain",

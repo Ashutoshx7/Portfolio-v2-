@@ -33,10 +33,10 @@ const timelineItems: TimelineItem[] = [
   {
     label: "GSoC 2026",
     shortLabel: "GSoC",
-    dates: "May 2026 – Present",
+    dates: "May 2026 – August 2026",
     experienceIndex: 1,
     start: 79,
-    end: 100,
+    end: 95,
     align: "end",
     icon: "/Experience-image/Google_Summer_of_Code_sun_logo_2022.svg (1).png",
     barClassName:
