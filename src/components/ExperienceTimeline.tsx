@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import styles from "./ExperienceTimeline.module.css";
 
 type TimelineItem = {
   label: string;
   shortLabel: string;
   dates: string;
+  detail: string;
   experienceIndex: number;
   start: number;
   end: number;
@@ -22,6 +24,7 @@ const timelineItems: TimelineItem[] = [
     label: "LF AI Security",
     shortLabel: "LF",
     dates: "Jun 2026 – Present",
+    detail: "AI Security Intern, Caracal",
     experienceIndex: 0,
     start: 84,
     end: 100,
@@ -34,6 +37,7 @@ const timelineItems: TimelineItem[] = [
     label: "GSoC 2026",
     shortLabel: "GSoC",
     dates: "May 2026 – August 2026",
+    detail: "AI Intern, Sugar Labs",
     experienceIndex: 1,
     start: 79,
     end: 95,
@@ -46,6 +50,7 @@ const timelineItems: TimelineItem[] = [
     label: "VengenceUI",
     shortLabel: "VengenceUI",
     dates: "Oct 2025 – Present",
+    detail: "Founder & Maintainer",
     experienceIndex: 2,
     start: 47,
     end: 100,
@@ -59,6 +64,7 @@ const timelineItems: TimelineItem[] = [
     label: "Open Source Contributor",
     shortLabel: "Open source",
     dates: "Sep 2025 – Apr 2026",
+    detail: "Sugar Labs, Joplin, kgateway & more",
     experienceIndex: 3,
     start: 42,
     end: 79,
@@ -72,6 +78,7 @@ const timelineItems: TimelineItem[] = [
     label: "GSoC 2025",
     shortLabel: "GSoC",
     dates: "May 2025 – Aug 2025",
+    detail: "Open Source Contributor",
     experienceIndex: 4,
     start: 23,
     end: 42,
@@ -84,6 +91,7 @@ const timelineItems: TimelineItem[] = [
     label: "C4GT",
     shortLabel: "C4GT",
     dates: "May 2025 – Aug 2025",
+    detail: "Open Source Contributor",
     experienceIndex: 5,
     start: 23,
     end: 42,
@@ -96,6 +104,7 @@ const timelineItems: TimelineItem[] = [
     label: "Open Source Contributor",
     shortLabel: "OSS",
     dates: "Dec 2024 – Apr 2025",
+    detail: "Full Stack Developer",
     experienceIndex: 6,
     start: 0,
     end: 23,
@@ -201,40 +210,57 @@ export function ExperienceTimeline({ onSelect }: ExperienceTimelineProps) {
 
             {timelineItems.map((item) => (
               <div
-                key={item.label}
+                key={item.experienceIndex}
                 className="relative"
               >
-                <button
-                  type="button"
-                  title={`${item.label} · ${item.dates}`}
-                  aria-label={`View ${item.label}, ${item.dates}`}
-                  onClick={() => onSelect(item.experienceIndex)}
-                  className={`group absolute top-1/2 z-10 flex h-8 -translate-y-1/2 cursor-pointer items-center overflow-hidden rounded-md border px-2 text-[10px] font-bold shadow-[0_3px_10px_rgba(0,0,0,0.18)] ring-1 ring-inset ring-white/15
-                    transition-[background-color,border-color,color,transform,box-shadow] duration-300 ease-out motion-reduce:transition-none
-                    before:pointer-events-none before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/25 before:to-transparent motion-safe:before:transition-transform motion-safe:before:duration-500
-                    hover:z-30 hover:shadow-[0_9px_24px_rgba(0,0,0,0.3)] motion-safe:hover:-translate-y-[62%] motion-safe:hover:before:translate-x-full
-                    focus-visible:z-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white motion-safe:focus-visible:-translate-y-[62%] motion-safe:focus-visible:before:translate-x-full dark:focus-visible:ring-zinc-600 dark:focus-visible:ring-offset-black ${
-                    item.align === "end" ? "justify-end" : "justify-start"
-                  } ${item.barClassName}`}
+                <div
+                  className={`${styles.item} absolute top-1/2 z-10 -translate-y-1/2`}
                   style={{ left: `${item.start}%`, right: `${100 - item.end}%` }}
                 >
-                  <span className="relative z-10 flex min-w-max items-center gap-1.5">
-                    <span className="relative flex size-4 shrink-0 items-center justify-center overflow-hidden rounded-[4px] border border-black/10 bg-white motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out motion-safe:group-hover:-rotate-6 motion-safe:group-hover:scale-110 motion-safe:group-focus-visible:-rotate-6 motion-safe:group-focus-visible:scale-110 dark:border-black/15">
-                      <Image
-                        src={item.icon}
-                        alt=""
-                        aria-hidden="true"
-                        width={16}
-                        height={16}
-                        sizes="16px"
-                        quality={60}
-                        className={`size-full object-contain p-px ${item.iconClassName ?? ""}`}
-                      />
+                  <button
+                    type="button"
+                    aria-label={`View ${item.label}`}
+                    aria-describedby={`experience-timeline-tip-${item.experienceIndex}`}
+                    onClick={() => onSelect(item.experienceIndex)}
+                    className={`${styles.bar} relative flex h-8 w-full cursor-pointer items-center overflow-hidden rounded-md border px-2 text-[10px] font-bold shadow-[0_3px_10px_rgba(0,0,0,0.18)] ring-1 ring-inset ring-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 ${
+                      item.align === "end" ? "justify-end" : "justify-start"
+                    } ${item.barClassName}`}
+                  >
+                    <span className="relative z-10 flex min-w-max items-center gap-1.5">
+                      <span className="relative flex size-4 shrink-0 items-center justify-center overflow-hidden rounded-[4px] border border-black/10 bg-white dark:border-black/15">
+                        <Image
+                          src={item.icon}
+                          alt=""
+                          aria-hidden="true"
+                          width={16}
+                          height={16}
+                          sizes="16px"
+                          quality={60}
+                          className={`size-full object-contain p-px ${item.iconClassName ?? ""}`}
+                        />
+                      </span>
+                      <span className="whitespace-nowrap sm:hidden">{item.shortLabel}</span>
+                      <span className="hidden whitespace-nowrap sm:inline">{item.label}</span>
                     </span>
-                    <span className="whitespace-nowrap sm:hidden">{item.shortLabel}</span>
-                    <span className="hidden whitespace-nowrap sm:inline">{item.label}</span>
-                  </span>
-                </button>
+                  </button>
+                  <div
+                    id={`experience-timeline-tip-${item.experienceIndex}`}
+                    role="tooltip"
+                    className={`${styles.tooltip} pointer-events-none absolute z-50 w-max max-w-56 rounded-md border border-zinc-200 bg-white/95 px-2.5 py-2 text-left shadow-[0_8px_20px_rgba(0,0,0,0.16)] backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/95 dark:shadow-[0_10px_24px_rgba(0,0,0,0.45)] ${
+                      item.experienceIndex <= 3 ? "top-full mt-2" : "bottom-full mb-2"
+                    } ${item.align === "end" ? "right-0" : "left-0"}`}
+                  >
+                    <p className="text-[11px] font-semibold leading-tight text-zinc-900 dark:text-zinc-100">
+                      {item.label}
+                    </p>
+                    <p className="mt-1 text-[10px] leading-snug text-zinc-600 dark:text-zinc-300">
+                      {item.detail}
+                    </p>
+                    <p className="mt-1.5 border-t border-zinc-100 pt-1.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+                      {item.dates}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

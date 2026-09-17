@@ -289,9 +289,9 @@ export default function AllExperiencePage() {
 
       {/* Content Section */}
       <div
-        className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(var(--experience-hero)+112px)] pb-16 px-4 flex flex-col z-10 relative"
+        className="pointer-events-none ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(var(--experience-hero)+112px)] pb-16 px-4 flex flex-col z-10 relative"
       >
-        <div className="relative pt-0 pb-6">
+        <div className="pointer-events-auto relative pt-0 pb-6">
 
           {/* Experience Items */}
           <div className="flex flex-col relative z-10 w-full">
