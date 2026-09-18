@@ -1,12 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
+import ReactDOM from "react-dom";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
+import lightBannerImage from "../../../public/ChatGPT Image May 22, 2026, 12_40_29 AM.jpg";
+import darkBannerImage from "../../../public/ChatGPT Image May 22, 2026, 12_49_39 AM.jpg";
 
-const darkBannerImage = "/ChatGPT%20Image%20May%2022%2C%202026%2C%2012_49_39%20AM.jpg";
+const bannerImageProps = { width: 250, height: 64, quality: 70, sizes: "250px" } as const;
+const lightBannerPreload = getImageProps({ ...bannerImageProps, alt: "", src: lightBannerImage }).props;
+const darkBannerPreload = getImageProps({ ...bannerImageProps, alt: "", src: darkBannerImage }).props;
 
 interface SocialProfile {
   name: string;
@@ -14,7 +19,7 @@ interface SocialProfile {
   avatar: string;
   bio: string;
   location: string;
-  banner?: string;
+  banner?: boolean;
   stats: {
     label: string;
     value: string | number;
@@ -37,7 +42,7 @@ const socialProfiles: Record<string, SocialProfile> = {
     name: "Ashutoshx7",
     handle: "@Ashutosh_7x7",
     avatar: "https://unavatar.io/twitter/Ashutosh_7x7",
-    banner: darkBannerImage,
+    banner: true,
     bio: "20 • Artist / Engineer • 2× GSoC • Vercel OSS",
     location: "Delhi, India (UTC +05:30)",
     stats: [
@@ -49,7 +54,7 @@ const socialProfiles: Record<string, SocialProfile> = {
     name: "Ashutosh Singh",
     handle: "in/ashutoshx7",
     avatar: "https://github.com/ashutoshx7.png",
-    banner: darkBannerImage,
+    banner: true,
     bio: "Building AI systems, developer tools, and open-source products.",
     location: "Lucknow, Uttar Pradesh, India",
     stats: [
@@ -90,6 +95,19 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
   // If there's no profile configuration for this social name, just render the child as-is
   if (!profile) {
     return <>{children}</>;
+  }
+
+  if (profile.banner) {
+    ReactDOM.preload(lightBannerPreload.src, {
+      as: "image",
+      imageSrcSet: lightBannerPreload.srcSet,
+      imageSizes: lightBannerPreload.sizes,
+    });
+    ReactDOM.preload(darkBannerPreload.src, {
+      as: "image",
+      imageSrcSet: darkBannerPreload.srcSet,
+      imageSizes: darkBannerPreload.sizes,
+    });
   }
 
   return (
@@ -226,22 +244,23 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                   <>
                     {/* Banner Section */}
                     {profile.banner ? (
-                      <div className="relative w-full h-[64px] bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
-                        {profile.banner.startsWith("bg-") ? (
-                          <div className={cn("w-full h-full", profile.banner)} />
-                        ) : (
-                          <Image
-                            src={profile.banner}
-                            alt="Banner"
-                            width={250}
-                            height={64}
-                            loading="eager"
-                            decoding="async"
-                            quality={75}
-                            sizes="250px"
-                            className="w-full h-full object-cover opacity-95 scale-[1.15] origin-right"
-                          />
-                        )}
+                      <div className="relative w-full h-[64px] overflow-hidden bg-[#d9e5e7] dark:bg-[#071329]">
+                        <Image
+                          {...bannerImageProps}
+                          src={lightBannerImage}
+                          alt=""
+                          placeholder="blur"
+                          loading="eager"
+                          className="h-full w-full object-cover object-center dark:hidden"
+                        />
+                        <Image
+                          {...bannerImageProps}
+                          src={darkBannerImage}
+                          alt=""
+                          placeholder="blur"
+                          loading="eager"
+                          className="hidden h-full w-full object-cover object-center dark:block"
+                        />
                       </div>
                     ) : (
                       // Fallback dark gradient banner for cards without a customized banner
