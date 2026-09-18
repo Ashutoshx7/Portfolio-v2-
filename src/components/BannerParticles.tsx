@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 const settings = {
-  minWind: 0.5,
-  maxWind: 3,
+  minWind: 1.2,
+  maxWind: 4.8,
   minSize: 6,
   maxSize: 18,
   emitterY: 0.2,
@@ -14,7 +14,7 @@ const settings = {
   rotationSpeed: 0,
   tumbleStrength: 0.3,
   staticTilt: 0,
-  particleCount: 30,
+  particleCount: 56,
   direction: 1 // 1 = left to right
 };
 
@@ -148,9 +148,11 @@ export function BannerParticles() {
         if (initOnScreen) {
           this.x = Math.random() * width;
         } else {
+          // Keep new leaves close to the edge so the stream never goes sparse.
+          const entryDistance = Math.min(width * 0.12, 80);
           this.x = settings.direction === -1
-            ? width + this.width + Math.random() * width
-            : -this.width - Math.random() * width;
+            ? width + this.width + Math.random() * entryDistance
+            : -this.width - Math.random() * entryDistance;
         }
 
         const sizeFactor = (this.width - cache.minSize) / (cache.maxSize - cache.minSize || 1);
@@ -208,7 +210,7 @@ export function BannerParticles() {
         ctx.transform(vecU.x, vecU.y, vecV.x, vecV.y, 0, 0);
         
         // Add a slight opacity for visual blending
-        ctx.globalAlpha = 0.45;
+        ctx.globalAlpha = 0.6;
         ctx.drawImage(particleImage, -this.width / 2, -this.height / 2, this.width, this.height);
         ctx.restore();
       }
@@ -228,11 +230,14 @@ export function BannerParticles() {
 
     const initParticles = () => {
       particles = [];
-      for (let i = 0; i < settings.particleCount; i++) {
-        // Init half on screen for immediate effect, half off screen
-        const initOnScreen = Math.random() > 0.5;
-        const particle = new Particle(initOnScreen);
-        particles.push(particle);
+      const count = Math.min(
+        settings.particleCount,
+        Math.max(32, Math.round((width * height) / 2500)),
+      );
+
+      // Seed the full banner immediately; replacements then flow in from the edge.
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle(true));
       }
     };
 
