@@ -44,7 +44,12 @@ export function HighlightCard({ item, layout = "marquee", number }: { item: High
                 preload={number !== undefined && number <= 2}
                 sizes="(min-width: 768px) 20vw, 100vw"
                 quality={75}
-                className="object-cover object-top saturate-[.78] transition-[filter,transform] duration-500 ease-out motion-safe:group-hover:scale-[1.015] group-hover:saturate-100"
+                className={cn(
+                  "object-cover object-top saturate-[.78] transition-[filter,transform] duration-500 ease-out group-hover:saturate-100",
+                  item.id === "gsoc-2026-certificate"
+                    ? "scale-[1.02] motion-safe:group-hover:scale-[1.03]"
+                    : "motion-safe:group-hover:scale-[1.015]",
+                )}
                 draggable={false}
               />
             </div>
