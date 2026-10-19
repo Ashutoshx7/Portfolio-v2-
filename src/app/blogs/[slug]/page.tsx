@@ -65,9 +65,9 @@ export async function generateMetadata({
       type: "article",
       images: [
         {
-          url: "/og-image.jpg",
-          width: 1024,
-          height: 576,
+          url: post.heroImage?.src ?? "/og-image.jpg",
+          width: post.heroImage?.width ?? 1024,
+          height: post.heroImage?.height ?? 576,
           alt: post.title,
         },
       ],
@@ -76,7 +76,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: ["/og-image.jpg"],
+      images: [post.heroImage?.src ?? "/og-image.jpg"],
     },
   };
 }
@@ -313,6 +313,22 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
           </header>
 
           <BlueprintDivider />
+
+          {post.heroImage && (
+            <figure className="my-7">
+              <div className="relative overflow-hidden rounded-[6px] border border-black/20 bg-zinc-950 shadow-sm shadow-black/10 dark:border-white/[0.12] dark:shadow-black/50">
+                <Image
+                  src={post.heroImage.src}
+                  alt={post.heroImage.alt}
+                  width={post.heroImage.width}
+                  height={post.heroImage.height}
+                  preload
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+            </figure>
+          )}
 
           <div className="space-y-5 py-7">
             {post.content.map((block, index) => (

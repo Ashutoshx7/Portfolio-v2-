@@ -8,6 +8,12 @@ export interface Blog {
   slug?: string;
   description?: string;
   readingTime?: string;
+  heroImage?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
   content?: BlogBlock[];
 }
 
@@ -46,6 +52,374 @@ export type BlogBlock =
     };
 
 export const blogsData: Blog[] = [
+  {
+    title: "How I Cracked GSoC 2026 with Sugar Labs",
+    date: "Oct 2026",
+    claps: 0,
+    tags: ["GSoC", "Open Source", "Sugar Labs"],
+    link: "/blogs/gsoc-2026-sugar-labs-journey",
+    isExternal: false,
+    slug: "gsoc-2026-sugar-labs-journey",
+    readingTime: "15 min read",
+    description:
+      "From my first PR on January 4 to reviewing hundreds of pull requests, building a complete project demo, and getting selected for Google Summer of Code 2026.",
+    heroImage: {
+      src: "/blog-images/gsoc-2026-sugar-labs/journey-banner.png",
+      alt: "A minimalist path through four colorful milestones, code contributions, and an open-source community.",
+      width: 1672,
+      height: 941,
+    },
+    content: [
+      {
+        type: "paragraph",
+        text: "I wasn't even planning to do GSoC this year.",
+      },
+      {
+        type: "paragraph",
+        text: "Seriously. I had already participated in GSoC before, and this time I was mostly focused on exploring AI, building projects, and improving my engineering skills.",
+      },
+      {
+        type: "paragraph",
+        text: "Then one of my friends suggested something: since I was already going deep into AI, why not explore GSoC organizations working on interesting AI projects?",
+      },
+      {
+        type: "paragraph",
+        text: "That sounded reasonable. But I didn't want to pick an organization just because it was participating in GSoC. I wanted to find a project I would genuinely enjoy building.",
+      },
+      {
+        type: "paragraph",
+        text: "That's when I came across Sugar Labs and its idea for AI-powered activity generation: users could describe what they wanted and generate educational activities using AI.",
+      },
+      {
+        type: "quote",
+        text: "Damn, this is actually something I'd love to build.",
+      },
+      {
+        type: "paragraph",
+        text: "There was just one problem. Sugar Labs was an established GSoC organization with a long history, an active community, and plenty of competition. I knew getting selected wouldn't be easy. But I also knew that if I approached the process carefully, I could give myself a pretty good chance.",
+      },
+      {
+        type: "heading",
+        text: "January 4: the first contribution",
+      },
+      {
+        type: "paragraph",
+        text: "I originally wanted to start contributing around December 15. Then college exams happened.",
+      },
+      {
+        type: "paragraph",
+        text: "By the end of December, I was getting stressed because I hadn't made any progress. I kept thinking about how other contributors might already be working while I was stuck preparing for exams. My exams finally ended around January 3. On January 4, I started contributing to Sugar Labs.",
+      },
+      {
+        type: "paragraph",
+        text: "One advantage I had was that I wasn't completely new to open source. I already understood Git, GitHub, pull requests, code review, and how open-source communities generally work.",
+      },
+      {
+        type: "paragraph",
+        text: "Before going deep into contributions, I researched the organization itself. I looked into previous GSoC contributors, explored the communication channels, found out when community meetings happened, and tried to understand what maintainers actually valued. I wasn't just trying to figure out how to get PRs merged. I wanted to understand how the organization worked.",
+      },
+      {
+        type: "paragraph",
+        text: "My first PR was relatively small. I treated it as a way to learn the codebase, understand the development workflow, and see how maintainers reviewed contributions. Nothing particularly impressive yet. But things started getting interesting after that.",
+      },
+      {
+        type: "heading",
+        text: "The first important decision: listening before contributing",
+      },
+      {
+        type: "paragraph",
+        text: "I started attending Sugar Labs community meetings. And I mean actually listening—not just joining to make my name visible.",
+      },
+      {
+        type: "paragraph",
+        text: "I paid attention to the problems maintainers discussed, the features they wanted to prioritize, and the areas where the project needed help. During one meeting, a mentor mentioned that performance was an important concern in Music Blocks. Certain parts of the application weren't performing as well as they should.",
+      },
+      {
+        type: "paragraph",
+        text: "A lot of new contributors naturally gravitate toward straightforward issues. They're easier to understand, finish, and turn into a merged PR. Performance problems are different. They require investigation, profiling, architectural context, and sometimes hours spent figuring out why something behaves the way it does—with no guarantee you'll find a quick solution.",
+      },
+      {
+        type: "paragraph",
+        text: "I realized this could be an opportunity. Instead of just working on whatever issue was available, I started working on problems the maintainers actually cared about.",
+      },
+      {
+        type: "paragraph",
+        text: "Over the following weeks, I worked on performance improvements and other issues. Eventually, during one of our meetings, a mentor specifically acknowledged and thanked me for the improvements I had been making to Music Blocks.",
+      },
+      {
+        type: "paragraph",
+        text: "It was a small moment, but it meant quite a lot—not because someone had praised me, but because I could see that my contributions were starting to make a difference.",
+      },
+      {
+        type: "heading",
+        text: "The day Music Blocks production broke",
+      },
+      {
+        type: "paragraph",
+        text: "One of the most memorable moments happened when the production version of Music Blocks broke. A PR had been reviewed and initially looked fine, but a subsequent change introduced a problem that affected production.",
+      },
+      {
+        type: "paragraph",
+        text: "I was in college when I noticed the discussion in the Sugar Labs Matrix channel. People were trying to understand why the application wasn't behaving correctly. I thought: what if I could figure out what's actually breaking?",
+      },
+      {
+        type: "paragraph",
+        text: "When I got time, I checked the browser's network requests, looked at what was failing, and traced the problem back to its source. Eventually, I found an issue involving a browser API call, fixed it, and submitted a PR.",
+      },
+      {
+        type: "paragraph",
+        text: "Something had broken in production, and I had identified and fixed it in roughly an hour of focused investigation. I was genuinely excited.",
+      },
+      {
+        type: "quote",
+        text: "You don't necessarily stand out by writing the most code. Sometimes you stand out by solving the problem that matters at the right moment.",
+      },
+      {
+        type: "paragraph",
+        text: "That experience helped me build trust with the maintainers. And that trust became important later.",
+      },
+      {
+        type: "heading",
+        text: "February 19: why I started contributing to Joplin too",
+      },
+      {
+        type: "paragraph",
+        text: "While Sugar Labs was my primary focus, I didn't want to depend entirely on one organization. GSoC is competitive, and selection involves factors beyond your control: an organization might receive fewer slots than expected, priorities can change, and other applicants can have excellent proposals too.",
+      },
+      {
+        type: "paragraph",
+        text: "When the updated organization list came out, I explored another organization and found Joplin. I began contributing there around February 19. Instead of immediately opening random issues, I reached out to maintainers to understand their expectations.",
+      },
+      {
+        type: "paragraph",
+        text: "I also asked whether they had an AI usage policy for contributors. The maintainer thought it was a good idea and decided to establish guidance around AI-assisted contributions: if contributors used AI, they should be transparent about how they used it and which parts of their work involved assistance. I liked that approach.",
+      },
+      {
+        type: "paragraph",
+        text: "Over the following weeks, I actively contributed to Joplin while continuing my work at Sugar Labs. I opened approximately 18 issues and had around 13 PRs merged.",
+      },
+      {
+        type: "paragraph",
+        text: "Balancing both organizations wasn't easy. I was attending meetings, investigating issues, submitting fixes, reviewing feedback, and keeping up with college. Some days were genuinely exhausting. But it meant I wasn't depending on a single opportunity.",
+      },
+      {
+        type: "quote",
+        text: "Choose two organizations you genuinely want to contribute to instead of putting everything into one option—but only if you have enough time to make meaningful contributions to both.",
+      },
+      {
+        type: "heading",
+        text: "March: building a proposal that actually stood out",
+      },
+      {
+        type: "paragraph",
+        text: "By March, I had spent nearly two months actively contributing. I understood the community, had interacted with maintainers, and was familiar with the technical direction of the project. Now came the proposal, and I knew I didn't want to rush it.",
+      },
+      {
+        type: "paragraph",
+        text: "Many contributors start writing proposals close to the deadline. I did the opposite and started roughly a month in advance. More time meant more chances to identify missing details, improve the ideas, build something meaningful, and get feedback.",
+      },
+      {
+        type: "paragraph",
+        text: "Especially for an AI-related project, writing an impressive-looking proposal had become relatively easy. Anyone could ask an AI model to produce a long, polished technical document. I needed to show something beyond polished writing. I wanted the proposal to prove that I understood the project and could execute it.",
+      },
+      {
+        type: "paragraph",
+        text: "I structured the document carefully, explained the architecture, added screenshots, used diagrams wherever they made an explanation clearer, and broke the implementation into manageable phases. I also built a working demo. I didn't want the proposal to be a description of what I might build; I wanted maintainers to see what I was already capable of building.",
+      },
+      {
+        type: "paragraph",
+        text: "I even included a separate Notion timeline. During community meetings, my mentor had repeatedly emphasized learning by actually doing things, so I reflected that idea in the proposal. It connected the technical plan with something the community genuinely valued—and showed that I had been paying attention.",
+      },
+      {
+        type: "paragraph",
+        text: "I kept revising until the structure, technical details, screenshots, and presentation were as strong as I could make them. Later, my mentor told me it was one of the best proposals he had seen. That meant a lot because I knew how much work had gone into it.",
+      },
+      {
+        type: "heading",
+        text: "The final eight hours before submission",
+      },
+      {
+        type: "paragraph",
+        text: "It was the final day of the proposal submission period. I had prepared the proposal, built the demo, documented the architecture, and polished everything. Then I reached out to my mentor for last-minute feedback.",
+      },
+      {
+        type: "paragraph",
+        text: "That night, he suggested adding version control to the project.",
+      },
+      {
+        type: "quote",
+        text: "Oh fuck. I have to build this now?",
+      },
+      {
+        type: "paragraph",
+        text: "It was an important suggestion. Version control would let users track changes and manage revisions of generated activities, but adding it to the existing demo at the last minute wasn't exactly part of my plan.",
+      },
+      {
+        type: "paragraph",
+        text: "Still, I decided to try. I used AI assistance to accelerate parts of the implementation, worked through the changes, updated the demo, and recorded another video showing the new functionality. The process took roughly eight hours.",
+      },
+      {
+        type: "paragraph",
+        text: "I was stressed, exhausted, and constantly thinking about the deadline, but I included the improvements before submitting. Not because last-minute work is something to celebrate, but because I was willing to respond to meaningful feedback even when implementing it was difficult.",
+      },
+      {
+        type: "heading",
+        text: "April 4: the decision that changed everything",
+      },
+      {
+        type: "paragraph",
+        text: "By this point, Sugar Labs had received an enormous amount of contribution activity. I remember seeing approximately 700 open pull requests, with contributors continuing to submit more.",
+      },
+      {
+        type: "paragraph",
+        text: "I could keep raising PRs, trying to remain one of the most active contributors, and competing on numbers until selection. But for how long? It was becoming exhausting, and I wasn't sure another PR was the most valuable thing I could do for the organization.",
+      },
+      {
+        type: "paragraph",
+        text: "During a meeting around April 4, I suggested something different to my mentor, Walter Bender: what if I helped review and organize the pending pull requests? I could identify useful changes, document my findings, and make it easier for him to decide what should be merged.",
+      },
+      {
+        type: "paragraph",
+        text: "He liked the idea, so I created a document to track the PRs I reviewed and recommended. Initially there were around 10 entries. Then 20. Then 40. And it kept growing.",
+      },
+      {
+        type: "paragraph",
+        text: "I checked whether changes made sense, whether they were useful, whether they had problems, and which contributions deserved closer attention. Walter still made the final review and merge decisions, but I was helping reduce the burden.",
+      },
+      {
+        type: "paragraph",
+        text: "Then other contributors began tagging me in their PRs and asking me to review their work. My role in the community was changing. I wasn't just another contributor submitting code; I was helping maintainers manage contributions from everyone else.",
+      },
+      {
+        type: "heading",
+        text: "From 700 open PRs to around 60",
+      },
+      {
+        type: "paragraph",
+        text: "Over approximately two weeks, the number of open PRs dropped from around 700 to roughly 60. During that period, I went through an estimated 800–1,000 pull requests as part of the review and triage effort.",
+      },
+      {
+        type: "paragraph",
+        text: "It was intense. There were days when I spent 16–20 hours working—checking PRs, reading code, updating the review document, answering contributors, and helping move the process forward.",
+      },
+      {
+        type: "paragraph",
+        text: "I wouldn't recommend that schedule as a sustainable way to work. It took a real toll on me. At the time, though, I knew the application period was approaching its final stage, and I wanted to make the most meaningful contribution I could.",
+      },
+      {
+        type: "paragraph",
+        text: "The experience changed how I thought about open source. Contributing isn't just writing code. Code review, triage, maintainability, communication, and helping other contributors are all valuable engineering work. Sometimes those activities have a much broader impact than another small code change.",
+      },
+      {
+        type: "heading",
+        text: "April 19: I'd done everything I could",
+      },
+      {
+        type: "paragraph",
+        text: "Around April 19, I understood that the organization was approaching the point where its selection recommendations would be finalized. By then, I had:",
+      },
+      {
+        type: "list",
+        items: [
+          "Contributed consistently since January.",
+          "Worked on performance improvements and production issues.",
+          "Built relationships with maintainers through actual work.",
+          "Created a detailed technical proposal and a working demo.",
+          "Incorporated last-minute mentor feedback.",
+          "Helped review and organize hundreds of pull requests.",
+          "Contributed to Joplin alongside Sugar Labs.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "I knew I had given the application everything I reasonably could. People in the community had become very encouraging, and some seemed convinced I would get selected. But nothing was guaranteed until the official announcement.",
+      },
+      {
+        type: "heading",
+        text: "April 21–30: the waiting was worse than I expected",
+      },
+      {
+        type: "paragraph",
+        text: "Once the main application and review work was over, I reduced the time I was spending on GSoC contributions. College exams were approaching, and I needed to get back to studying. Mentally, though, I was still thinking about GSoC.",
+      },
+      {
+        type: "paragraph",
+        text: "What if I don't get selected? What if the organization receives fewer slots? What if something unexpected happens?",
+      },
+      {
+        type: "paragraph",
+        text: "I knew the proposal was strong. I knew the contributions were meaningful. I knew the maintainers appreciated my work. But selection wasn't entirely in my hands, and that was what made the waiting so stressful.",
+      },
+      {
+        type: "paragraph",
+        text: "The previous weeks had taken a toll on my mental health. I was exhausted from balancing two organizations, college, technical work, and the pressure I'd put on myself. At some point, I had to accept that I'd done my part. The rest was no longer something I could control.",
+      },
+      {
+        type: "heading",
+        text: "April 30: the selection email",
+      },
+      {
+        type: "paragraph",
+        text: "Then April 30 arrived. There had already been some discussion around the selection data, and I was beginning to feel that things might work out. But I still wanted the official confirmation.",
+      },
+      {
+        type: "paragraph",
+        text: "And finally, I received the email. I had been selected for Google Summer of Code 2026 with Sugar Labs.",
+      },
+      {
+        type: "paragraph",
+        text: "After almost four months of contributions, countless hours of debugging, hundreds of code reviews, a proposal I'd spent weeks preparing, and a lot of uncertainty, it had finally happened.",
+      },
+      {
+        type: "paragraph",
+        text: "I had also made significant progress with Joplin and received a positive selection outcome there, but Sugar Labs was my first priority. So that's what I chose.",
+      },
+      {
+        type: "paragraph",
+        text: "I was going to build the AI-powered activity generation project that had caught my attention back in January—the very project that made me decide to try GSoC again. That felt pretty special.",
+      },
+      {
+        type: "heading",
+        text: "What this journey taught me",
+      },
+      {
+        type: "paragraph",
+        text: "Looking back, the biggest difference wasn't the number of PRs I submitted. It was the way I approached contributing.",
+      },
+      {
+        type: "paragraph",
+        text: "I spent time understanding the organization, its people, its problems, and what meaningful contributions actually looked like. When performance mattered, I worked on performance. When production broke, I investigated it. When the proposal needed improvement, I built a demo and kept iterating. When maintainers were overwhelmed, I helped review. When I received feedback, I acted on it.",
+      },
+      {
+        type: "paragraph",
+        text: "None of those things guaranteed selection. Together, they helped me become someone the maintainers could trust.",
+      },
+      {
+        type: "quote",
+        text: "Don't contribute just to get selected. Become someone the organization genuinely benefits from having around.",
+      },
+      {
+        type: "paragraph",
+        text: "Also, don't confuse the amount of time you spend working with the value you create. I pushed myself extremely hard during this period, and there were things I could have managed better. You don't need to sacrifice your mental health or work 20 hours a day to be a valuable open-source contributor.",
+      },
+      {
+        type: "paragraph",
+        text: "Consistency, technical depth, communication, and choosing the right problems matter far more than simply being online all day.",
+      },
+      {
+        type: "paragraph",
+        text: "For me, this journey started on January 4 with a small contribution. It turned into performance engineering, production debugging, proposal design, working with maintainers, and helping manage a huge volume of community contributions.",
+      },
+      {
+        type: "paragraph",
+        text: "On April 30, it ended with a selection email. Or maybe that's not quite right—because getting selected was only the beginning of actually building the project. And that's the part I was most excited about.",
+      },
+      {
+        type: "quote",
+        text: "From January 4 to April 30. One hell of a journey. See you in the next one.",
+      },
+    ],
+  },
   {
     title: "You Are Not Ready for Open Source Just Because You Want to Start",
     date: "Jul 2026",
