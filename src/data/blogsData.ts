@@ -123,6 +123,17 @@ export const blogsData: Blog[] = [
         text: "My first PR was relatively small. I treated it as a way to learn the codebase, understand the development workflow, and see how maintainers reviewed contributions. Nothing particularly impressive yet. But things started getting interesting after that.",
       },
       {
+        type: "links",
+        items: [
+          {
+            title: "My first Sugar Labs PR — Music Blocks #5002",
+            href: "https://github.com/sugarlabs/musicblocks/pull/5002",
+            description:
+              "Added tests for logo.js and expanded the palette test coverage.",
+          },
+        ],
+      },
+      {
         type: "heading",
         text: "The first important decision: listening before contributing",
       },
@@ -151,6 +162,29 @@ export const blogsData: Blog[] = [
         text: "It was a small moment, but it meant quite a lot—not because someone had praised me, but because I could see that my contributions were starting to make a difference.",
       },
       {
+        type: "links",
+        items: [
+          {
+            title: "Lazy-load audio samples — Music Blocks #5022",
+            href: "https://github.com/sugarlabs/musicblocks/pull/5022",
+            description:
+              "Reduced initial loading and memory usage by loading instrument samples on demand.",
+          },
+          {
+            title: "Optimize canvas rendering — Music Blocks #5091",
+            href: "https://github.com/sugarlabs/musicblocks/pull/5091",
+            description:
+              "Introduced a dirty-flag rendering pattern to avoid unnecessary idle updates.",
+          },
+          {
+            title: "Reduce CPU usage — Music Blocks #5161",
+            href: "https://github.com/sugarlabs/musicblocks/pull/5161",
+            description:
+              "Improved the rendering pipeline, ticker behavior, and turtle initialization.",
+          },
+        ],
+      },
+      {
         type: "heading",
         text: "The day Music Blocks production broke",
       },
@@ -165,6 +199,17 @@ export const blogsData: Blog[] = [
       {
         type: "paragraph",
         text: "When I got time, I checked the browser's network requests, looked at what was failing, and traced the problem back to its source. Eventually, I found an issue involving a browser API call, fixed it, and submitted a PR.",
+      },
+      {
+        type: "links",
+        items: [
+          {
+            title: "Production audio fix — Music Blocks #5300",
+            href: "https://github.com/sugarlabs/musicblocks/pull/5300",
+            description:
+              "Loaded the p5 sound adapter so the AudioNode.connect compatibility patch applied correctly.",
+          },
+        ],
       },
       {
         type: "paragraph",
