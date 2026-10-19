@@ -463,6 +463,17 @@ export const blogsData: Blog[] = [
         type: "quote",
         text: "From January 4 to April 30. One hell of a journey. See you in the next one.",
       },
+      {
+        type: "links",
+        items: [
+          {
+            title: "Read my GSoC 2026 proposal",
+            href: "https://docs.google.com/document/d/1EcbYSfOsAO-7Sar9_KpFHqr_ZADbZsMjp9077ucNlD0/edit?usp=sharing",
+            description:
+              "See the complete proposal, technical plan, architecture, and timeline I submitted to Sugar Labs.",
+          },
+        ],
+      },
     ],
   },
   {
