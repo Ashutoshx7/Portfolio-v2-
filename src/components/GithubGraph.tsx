@@ -222,7 +222,7 @@ export function GithubGraph() {
       </div>
 
       <p id="github-activity-summary" className="sr-only">
-        Calendar heatmap showing daily GitHub contribution counts for Ashutoshx7 over the last year. Scroll horizontally to inspect all weeks.
+        Calendar heatmap showing daily GitHub contribution counts for Farhandy Akbar over the last year. Scroll horizontally to inspect all weeks.
       </p>
 
       {/* Graph content — sits directly on the page background */}

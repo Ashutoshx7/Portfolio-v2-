@@ -26,22 +26,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://ashutoshx7.me"
   ),
-  title: "Ashutoshx7",
+  title: "Farhandy Akbar",
   description:
     "Full stack developer building clean, modern websites and apps with a focus on design, functionality, and attention to detail.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png", sizes: "256x256" },
     ],
-    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: {
-    title: "Ashutoshx7",
+    title: "Farhandy Akbar",
     description:
       "Full stack developer building clean, modern websites and apps.",
     url: "https://ashutoshx7.me",
-    siteName: "Ashutoshx7",
+    siteName: "Farhandy Akbar",
     type: "website",
     images: [
       {
@@ -50,13 +48,13 @@ export const metadata: Metadata = {
         width: 1024,
         height: 576,
         type: "image/jpeg",
-        alt: "Ashutoshx7 - Engineer / Artist Portfolio",
+        alt: "Farhandy Akbar - Engineer / Artist Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ashutoshx7",
+    title: "Farhandy Akbar",
     description:
       "Full stack developer building clean, modern websites and apps.",
     site: "@Ashutosh_7x7",
