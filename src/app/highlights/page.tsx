@@ -9,8 +9,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { highlightsData } from "@/data/highlightsData";
 
 export const metadata: Metadata = {
-  title: "Highlights | Ashutoshx7",
-  description: "A complete archive of Ashutoshx7's highlights and milestones.",
+  title: "Highlights | Farhandy Akbar",
+  description: "A complete archive of Farhandy Akbar's highlights and milestones.",
 };
 
 const horizontalDots = {

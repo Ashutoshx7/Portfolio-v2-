@@ -20,7 +20,6 @@ import {
   SiBun,
   SiCplusplus,
   SiDatabricks,
-  SiDiscord,
   SiDjango,
   SiDocker,
   SiExpo,
@@ -156,7 +155,7 @@ export default function Home() {
               {/* The inner image */}
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
                 <Image
-                  src="/avatar.png"
+                  src="/pp.avif"
                   alt="Profile"
                   width={240}
                   height={240}
@@ -169,11 +168,11 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center pt-8">
+            <div className="flex flex-col justify-center mt-3">
               <h1 className="text-[20px] sm:text-[24px] font-bold text-zinc-800 dark:text-zinc-100 tracking-tight leading-none mb-0.5 [text-shadow:-1.5px_0_0_rgba(0,200,255,0.3),1.5px_0_0_rgba(255,80,0,0.3)] dark:[text-shadow:-1.5px_0_0_rgba(0,200,255,0.6),1.5px_0_0_rgba(255,80,0,0.6)]">
                 Farhandy Akbar
               </h1>
-              <p className="text-[13px] sm:text-[14px] text-zinc-500 dark:text-zinc-400">20</p>
+              <p className="text-[13px] sm:text-[14px] text-zinc-500 dark:text-zinc-400">Designer</p>
             </div>
           </div>
 
@@ -199,8 +198,8 @@ export default function Home() {
 
         {/* Buttons */}
         <div className="flex flex-wrap items-center gap-2 mt-4">
-          <FlipCoverButton href="https://cal.com/ashutosh-singh-1fqn5v/30min" label="Book an intro call" />
-          <Link href="/contact">
+          <FlipCoverButton href="https://cal.com/farhandy-akbar-blm8wa/30min" label="Book an intro call" />
+          <Link href="mailto:hellofarhandy@gmail.com">
             <SoftPillButton
               as="span"
               variant="secondary"
@@ -222,10 +221,9 @@ export default function Home() {
           <h2 className="text-[14px] text-zinc-500 mb-2">Here are my <span className="font-medium text-zinc-800 dark:text-zinc-200">socials</span></h2>
           <div className="flex flex-wrap gap-1.5">
             {[
-              { name: 'GitHub', href: 'https://github.com/Ashutoshx7?tab=overview&from=2026-05-01&to=2026-05-15', icon: <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" strokeWidth="2" fill="none"></path> },
-              { name: 'Twitter', href: 'https://x.com/Ashutosh_7x7', icon: <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768M20 4l-6.768 6.768" stroke="currentColor" strokeWidth="2" fill="none" /> },
-              { name: 'LinkedIn', href: 'https://www.linkedin.com/in/ashutosh-singh-855177329/', icon: <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="2" fill="none"></path> },
-              { name: 'Discord', href: 'https://discord.com/users/1137614232167399474' },
+              { name: 'GitHub', href: 'https://github.com/Farhandy-Akbar', icon: <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" strokeWidth="2" fill="none"></path> },
+              { name: 'X', href: 'https://x.com/uifarhandy', icon: <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768M20 4l-6.768 6.768" stroke="currentColor" strokeWidth="2" fill="none" /> },
+              { name: 'LinkedIn', href: 'https://www.linkedin.com/in/farhandyakbar/', icon: <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="2" fill="none"></path> },
             ].map((social, i) => (
               <SocialHoverCard key={i} socialName={social.name}>
                 <SoftPillButton
@@ -237,13 +235,9 @@ export default function Home() {
                   className="px-3 py-1.5 !text-[12px]"
                 >
                   <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                    {social.name === 'Discord' ? (
-                      <SiDiscord className="w-3.5 h-3.5" aria-hidden="true" />
-                    ) : (
-                      <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
-                        {social.icon}
-                      </svg>
-                    )}
+                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
+                      {social.icon}
+                    </svg>
                     {social.name}
                   </div>
                 </SoftPillButton>

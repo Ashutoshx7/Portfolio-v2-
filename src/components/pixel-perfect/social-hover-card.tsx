@@ -6,8 +6,8 @@ import * as HoverCard from "@radix-ui/react-hover-card";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Image, { getImageProps } from "next/image";
-import lightBannerImage from "../../../public/ChatGPT Image May 22, 2026, 12_40_29 AM.jpg";
-import darkBannerImage from "../../../public/ChatGPT Image May 22, 2026, 12_49_39 AM.jpg";
+import lightBannerImage from "../../../public/x-banner.png";
+import darkBannerImage from "../../../public/x-banner.png";
 
 const bannerImageProps = { width: 250, height: 64, quality: 70, sizes: "250px" } as const;
 const lightBannerPreload = getImageProps({ ...bannerImageProps, alt: "", src: lightBannerImage }).props;
@@ -28,58 +28,50 @@ interface SocialProfile {
 
 const socialProfiles: Record<string, SocialProfile> = {
   GitHub: {
-    name: "Ashutosh Singh",
-    handle: "Ashutoshx7",
-    avatar: "https://github.com/ashutoshx7.png",
+    name: "Farhandy Akbar",
+    handle: "Farhandy-Akbar",
+    avatar: "https://github.com/Farhandy-Akbar.png",
     bio: "20 • Artist / Engineer • Vengeance ARC",
-    location: "Delhi, India (UTC +05:30)",
+    location: "Jakarta, Indonesia (UTC +07:00)",
     stats: [
       { value: "131", label: "Repositories" },
       { value: "907", label: "Followers" },
     ],
   },
-  Twitter: {
-    name: "Ashutoshx7",
-    handle: "@Ashutosh_7x7",
-    avatar: "https://unavatar.io/twitter/Ashutosh_7x7",
+  X: {
+    name: "Farhandy Akbar",
+    handle: "@uifarhandy",
+    avatar: "https://unavatar.io/twitter/uifarhandy",
     banner: true,
-    bio: "20 • Artist / Engineer • 2× GSoC • Vercel OSS",
-    location: "Delhi, India (UTC +05:30)",
+    bio: "Product Designer\nbuilding sandava.id",
+    location: "Jakarta, Indonesia (UTC +07:00)",
     stats: [
       { value: "500+", label: "Following" },
       { value: "5K+", label: "Followers" },
     ],
   },
   LinkedIn: {
-    name: "Ashutosh Singh",
-    handle: "in/ashutoshx7",
-    avatar: "https://github.com/ashutoshx7.png",
+    name: "Farhandy Akbar",
+    handle: "in/farhandyakbar",
+    avatar: "https://github.com/Farhandy-Akbar.png",
     banner: true,
     bio: "Building AI systems, developer tools, and open-source products.",
-    location: "Lucknow, Uttar Pradesh, India",
+    location: "Jakarta, Indonesia (UTC +07:00)",
     stats: [
       { value: "500+", label: "Connections" },
       { value: "5K+", label: "Followers" },
     ],
   },
   Medium: {
-    name: "Ashutosh Singh",
-    handle: "@ashutoshx7",
-    avatar: "https://github.com/ashutoshx7.png",
+    name: "Farhandy Akbar",
+    handle: "@farhandyakbar",
+    avatar: "https://github.com/Farhandy-Akbar.png",
     bio: "Writing about modern web engineering, pixel-perfect design systems, and frontend optimizations.",
-    location: "Delhi, India (UTC +05:30)",
+    location: "Jakarta, Indonesia (UTC +07:00)",
     stats: [
       { value: "12", label: "Stories" },
       { value: "85", label: "Followers" },
     ],
-  },
-  Discord: {
-    name: "Ashutoshx7",
-    handle: "ashutoshsingh71",
-    avatar: "/discord-avatar.png",
-    bio: "Even if it's dark, keep moving forward.",
-    location: "",
-    stats: [],
   },
 };
 
@@ -142,7 +134,7 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                   "text-zinc-900 dark:text-zinc-100 select-none"
                 )}
               >
-                {socialName === "GitHub" || socialName === "Discord" ? (
+                {socialName === "GitHub" ? (
                   // Official flat Layout (No banner, side-by-side avatar and name/handle)
                   <div className="p-4">
                     {/* Top Row: Avatar & Name side-by-side */}
@@ -162,10 +154,6 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                             className="w-full h-full object-cover grayscale opacity-90 contrast-100 mix-blend-multiply dark:mix-blend-normal"
                           />
                         </div>
-                        {/* Discord active green dot indicator */}
-                        {socialName === "Discord" && (
-                          <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full border-2 border-white dark:border-[#0c0c0e] bg-green-500 shadow-sm" />
-                        )}
                       </div>
 
                       {/* Name and Handle */}
@@ -173,12 +161,7 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                         <h3 className="text-[13.5px] font-bold tracking-tight text-zinc-950 dark:text-zinc-50 truncate leading-tight">
                           {profile.name}
                         </h3>
-                        <span className={cn(
-                          "text-[11.5px] mt-0.5 leading-none",
-                          socialName === "Discord"
-                            ? "text-zinc-400 dark:text-zinc-500 font-sans"
-                            : "text-zinc-400 dark:text-zinc-500 font-mono"
-                        )}>
+                        <span className="text-[11.5px] mt-0.5 leading-none text-zinc-400 dark:text-zinc-500 font-mono">
                           {profile.handle}
                         </span>
                       </div>
@@ -190,17 +173,6 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                         {profile.bio}
                       </p>
                     </div>
-
-                    {/* Discord Status Footer */}
-                    {socialName === "Discord" && (
-                      <div className="mt-3.5 pt-3 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-[11.5px]">
-                        <div className="flex items-center gap-2">
-                          <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-                          <span className="text-zinc-700 dark:text-zinc-300 font-semibold">Online</span>
-                        </div>
-                        <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-sans uppercase tracking-wider font-semibold">Active Status</span>
-                      </div>
-                    )}
 
                     {/* Location Section */}
                     {profile.location && (
@@ -298,7 +270,7 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                             {profile.name}
                           </h3>
                           {/* verified blue badge for Twitter */}
-                          {socialName === "Twitter" && (
+                          {socialName === "X" && (
                             <svg viewBox="0 0 24 24" className="w-[13.5px] h-[13.5px] text-[#1d9bf0] fill-current shrink-0 select-none">
                               <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.48 0-.94.1-1.348.27C14.825 2.515 13.512 1.5 12 1.5s-2.825 1.015-3.422 2.28c-.408-.17-.867-.27-1.348-.27-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.48 0 .94-.1 1.348-.27.597 1.265 1.91 2.28 3.422 2.28s2.825-1.015 3.422-2.28c.408.17.867.27 1.348.27 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6zm-12.72 3.28L6.47 12.5c-.39-.39-.39-1.03 0-1.42s1.02-.39 1.41 0l2.2 2.2 5.09-5.09c.39-.39 1.03-.39 1.42 0s.39 1.03 0 1.42l-5.8 5.8c-.2.2-.46.3-.71.3s-.51-.1-.71-.3z" />
                             </svg>

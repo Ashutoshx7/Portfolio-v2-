@@ -52,12 +52,12 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Blog | Ashutoshx7",
+      title: "Blog | Farhandy Akbar",
     };
   }
 
   return {
-    title: `${post.title} | Ashutoshx7`,
+    title: `${post.title} | Farhandy Akbar`,
     description: post.description,
     openGraph: {
       title: post.title,
